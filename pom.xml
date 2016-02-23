@@ -74,7 +74,7 @@
         <repository>
             <id>bintray-flossware-maven-jcore</id>
             <name>flossware-maven-jcore</name>
-            <url>https://api.bintray.com/maven/flossware/maven/jCore</url>
+            <url>https://api.bintray.com/maven/flossware/maven/jCore/;publish=1</url>
         </repository>
     </distributionManagement>
 </project>
