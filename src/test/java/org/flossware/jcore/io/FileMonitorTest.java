@@ -41,7 +41,7 @@ public class FileMonitorTest {
      */
     @Before
     public void testSetup() throws IOException {
-        tempFile = File.createTempFile("P" + System.currentTimeMillis() + "_", "_S" + System.currentTimeMillis(), new File(System.getProperty("user.home")));
+        tempFile = File.createTempFile("P" + System.currentTimeMillis() + "_", "_S" + System.currentTimeMillis());
         tempFile.deleteOnExit();
     }
 
@@ -98,7 +98,7 @@ public class FileMonitorTest {
      */
     @Test
     public void test_exists() throws IOException {
-        final File tempFileNotExist = File.createTempFile("prefix1", "suffix1", new File(System.getProperty("user.home")));
+        final File tempFileNotExist = File.createTempFile("prefix1", "suffix1");
         tempFileNotExist.deleteOnExit();
         tempFileNotExist.delete();
 
