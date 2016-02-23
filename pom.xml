@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<groupId>org.flossware</groupId>
-	<artifactId>jcore</artifactId>
+	<artifactId>jCore</artifactId>
 	<version>1.0.0</version>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -74,7 +74,7 @@
         <repository>
             <id>bintray-flossware-maven-jcore</id>
             <name>flossware-maven-jcore</name>
-            <url>https://api.bintray.com/maven/flossware/maven/jcore</url>
+            <url>https://api.bintray.com/maven/flossware/maven/jCore</url>
         </repository>
     </distributionManagement>
 </project>
