@@ -19,6 +19,7 @@ package org.flossware.jcore.collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
 import org.flossware.jcore.AbstractCommonBase;
 import org.flossware.jcore.utils.collections.ArrayUtils;
 
@@ -118,7 +119,7 @@ public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> 
      */
     @Override
     public void remove() {
-        getLogger().warning(REMOVE_ERROR_MSG);
+        getLogger().log(Level.WARNING, REMOVE_ERROR_MSG);
 
         throw new UnsupportedOperationException(REMOVE_ERROR_MSG);
     }
