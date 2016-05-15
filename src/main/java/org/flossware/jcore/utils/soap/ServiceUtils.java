@@ -44,6 +44,7 @@ public class ServiceUtils {
      */
     static QName computeQName(final WebServiceClient webServiceClient) {
         ObjectUtils.ensureObject(webServiceClient, "Must have a WebServiceClient annotation");
+
         return new QName(webServiceClient.targetNamespace(), webServiceClient.name());
     }
 
@@ -63,7 +64,7 @@ public class ServiceUtils {
     /**
      * Finds the port method in the serviceClass.
      *
-     * @param <S>          the type of service.
+     * @param <S> the type of service.
      *
      * @param serviceClass the service class to find the port method.
      *
@@ -77,13 +78,14 @@ public class ServiceUtils {
                 return method;
             }
         }
+
         throw new IllegalArgumentException("Service class [" + serviceClass.getName() + "] has no WebEndpoint!");
     }
 
     /**
      * Return the return type of the port method for serviceClass.
      *
-     * @param <S>          the type of service.
+     * @param <S> the type of service.
      *
      * @param serviceClass the service class.
      *
@@ -98,7 +100,7 @@ public class ServiceUtils {
     /**
      * Return the name attribute of the port method's web end point annotation for serviceClass.
      *
-     * @param <S>          the type of service.
+     * @param <S> the type of service.
      *
      * @param serviceClass the service class.
      *
@@ -113,7 +115,7 @@ public class ServiceUtils {
     /**
      * Return the name attribute of the port method's web end point annotation for serviceClass.
      *
-     * @param <S>          the type of service.
+     * @param <S> the type of service.
      *
      * @param serviceClass the service class.
      *
@@ -128,7 +130,7 @@ public class ServiceUtils {
     /**
      * Create a service using URL to the wsdl.
      *
-     * @param <S>          the type of service.
+     * @param <S> the type of service.
      *
      * @param serviceClass the service class.
      * @param wsdlResource the URL to the wsdl.
@@ -150,7 +152,7 @@ public class ServiceUtils {
     /**
      * Create a service using the wsdl resource.
      *
-     * @param <S>          the type of service.
+     * @param <S> the type of service.
      *
      * @param serviceClass the service class.
      * @param wsdlResource the URL to the wsdl.

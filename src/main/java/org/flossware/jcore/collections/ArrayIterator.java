@@ -26,7 +26,7 @@ import org.flossware.jcore.utils.collections.ArrayUtils;
  * Converts an array into an iterator.
  *
  * @author Scot P. Floess
- * 
+ *
  * @param <T> the type in the array.
  */
 public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> {
@@ -118,6 +118,8 @@ public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> 
      */
     @Override
     public void remove() {
+        getLogger().warning(REMOVE_ERROR_MSG);
+
         throw new UnsupportedOperationException(REMOVE_ERROR_MSG);
     }
 }
