@@ -16,6 +16,7 @@
  */
 package org.flossware.jcore.operation;
 
+import java.util.logging.Level;
 import org.flossware.jcore.AbstractCommonBase;
 
 /**
@@ -38,6 +39,6 @@ public class NullFailure<V> extends AbstractCommonBase implements Failure<V> {
      */
     @Override
     public void failed(final V obj, final Throwable failure) {
+        log(Level.FINEST, "Failed obj [{0}] failure {1}", obj, failure);
     }
-
 }

@@ -14,41 +14,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.flossware.jcore;
+package org.flossware.jcore.utils;
 
 import java.util.logging.Level;
-import org.flossware.jcore.utils.TestUtils;
+import java.util.logging.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Silly test for the AbstractCommonBase base class.
+ * Tests the LoggerUtils utility class.
  *
  * @author Scot P. Floess
  */
-public class AbstractCommonBaseTest {
+public class LoggerUtilsTest {
 
-    /**
-     * Need to extend as base is abstract.
-     */
-    class Stub extends AbstractCommonBase {
-
-    }
-
-    /**
-     * Let's make sure the logger is always set.
-     */
-    @Test
-    public void test_getLogger() {
-        Assert.assertNotNull("Should have a logger", new Stub().getLogger());
-    }
+    static final Logger LOGGER = Logger.getLogger(LoggerUtilsTest.class.getName());
 
     /**
      * Doesn't really test anything - just ensures we can log.
      */
     @Test
     public void test_log() {
-        new Stub().log(Level.SEVERE, "This is a log {0} for {1}", TestUtils.generateUniqueStr("0"), TestUtils.generateUniqueStr("1"));
+        LoggerUtils.log(LOGGER, Level.SEVERE, "This is a log {0} for {1}", TestUtils.generateUniqueStr("0"), TestUtils.generateUniqueStr("1"));
     }
 
     /**
@@ -58,7 +45,7 @@ public class AbstractCommonBaseTest {
     public void test_logF_V() {
         final String toCompare = TestUtils.generateUniqueStr("0");
 
-        Assert.assertSame("Should have gotten correct return value", toCompare, new Stub().logF(Level.SEVERE, "This is it {0}", toCompare));
+        Assert.assertSame("Should have gotten correct return value", toCompare, LoggerUtils.logF(LOGGER, Level.SEVERE, "This is it {0}", toCompare));
     }
 
     /**
@@ -71,7 +58,7 @@ public class AbstractCommonBaseTest {
         final String str2 = TestUtils.generateUniqueStr("2");
         final String str3 = TestUtils.generateUniqueStr("3");
 
-        Assert.assertSame("Should have gotten correct return value", str2, new Stub().logFi(Level.SEVERE, "This is it {0} {1} {2} {3}", 2, str0, str1, str2, str3));
+        Assert.assertSame("Should have gotten correct return value", str2, LoggerUtils.logFi(LOGGER, Level.SEVERE, "This is it {0} {1} {2} {3}", 2, str0, str1, str2, str3));
     }
 
     /**
@@ -84,6 +71,6 @@ public class AbstractCommonBaseTest {
         final String str2 = TestUtils.generateUniqueStr("2");
         final String str3 = TestUtils.generateUniqueStr("3");
 
-        Assert.assertSame("Should have gotten correct return value", str0, new Stub().logF(Level.SEVERE, "This is it {0} {1} {2} {3}", str0, str1, str2, str3));
+        Assert.assertSame("Should have gotten correct return value", str0, LoggerUtils.logF(LOGGER, Level.SEVERE, "This is it {0} {1} {2} {3}", str0, str1, str2, str3));
     }
 }

@@ -110,6 +110,7 @@ public class StringUtilsTest {
      */
     @Test
     public void test_isSeparatorAppendable() {
+        Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 0, (Object) null));
         Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 0, "hello"));
         Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 1, "hello"));
         Assert.assertTrue("Should need appendable separator", StringUtils.isSeparatorAppendable("/", 0, "hello", "Goodbye"));

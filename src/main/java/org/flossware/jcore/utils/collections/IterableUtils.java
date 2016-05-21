@@ -19,6 +19,7 @@ package org.flossware.jcore.utils.collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.flossware.jcore.Filter;
+import org.flossware.jcore.utils.LoggerUtils;
 import org.flossware.jcore.utils.ObjectUtils;
 
 /**
@@ -55,17 +56,17 @@ public class IterableUtils {
     /**
      * See if a collection meets a filter.
      *
-     * @param <T>      the type within the collection to search.
-     * @param <V>      the value to search for within the collection.
+     * @param <T> the type within the collection to search.
+     * @param <V> the value to search for within the collection.
      *
      * @param toSearch the collection to iterate over to see if it contains a value.
-     * @param filter   the filter to apply to each object.
-     * @param value    using filter, determining if it is contained in <code>toSearch</code>.
+     * @param filter the filter to apply to each object.
+     * @param value using filter, determining if it is contained in <code>toSearch</code>.
      *
      * @return true if the collection meets the filter or false if not.
      */
     public static <T, V> boolean contains(final Iterable<T> toSearch, final Filter<T, V> filter, final V value) {
-        getLogger().log(Level.FINE, "Determining if [{0}] is found in {1}", new Object[]{value, toSearch});
+        LoggerUtils.log(getLogger(), Level.FINE, "Determining if [{0}] is found in {1}", value, toSearch);
 
         ObjectUtils.ensureObject(toSearch, ITERABLE_ERROR_MSG);
         ObjectUtils.ensureObject(filter, FILTER_ERROR_MSG);

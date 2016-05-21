@@ -82,6 +82,8 @@ public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> 
      */
     void ensureNext() {
         if (getIndex().intValue() >= getValues().length) {
+            log(Level.WARNING, "No next element!  Current index [{0}] Total values [{1}]", getIndex().intValue(), getValues().length);
+
             throw new NoSuchElementException(NEXT_ERROR_MSG);
         }
     }
@@ -101,7 +103,7 @@ public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> 
      */
     @Override
     public boolean hasNext() {
-        return getIndex().intValue() < getValues().length;
+        return logF(Level.FINEST, "Has more data [{0}]", (getIndex().intValue() < getValues().length));
     }
 
     /**
@@ -111,7 +113,7 @@ public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> 
     public T next() {
         ensureNext();
 
-        return getValues()[getIndex().getAndIncrement()];
+        return logF(Level.FINEST, "Next value [{0}]", getValues()[getIndex().getAndIncrement()]);
     }
 
     /**

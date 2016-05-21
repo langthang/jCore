@@ -16,10 +16,13 @@
  */
 package org.flossware.jcore.utils.soap;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPHeader;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
+import org.flossware.jcore.utils.LoggerUtils;
 
 /**
  * Soap utility class.
@@ -29,6 +32,20 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 public class SoapUtils {
 
     /**
+     * Our logger.
+     */
+    private static final Logger logger = Logger.getLogger(ServiceUtils.class.getName());
+
+    /**
+     * Return the logger.
+     *
+     * @return the logger.
+     */
+    private static Logger getLogger() {
+        return logger;
+    }
+
+    /**
      * Return false if val is null otherwise the boolean representation of val.
      *
      * @param val the value to examine.
@@ -36,7 +53,7 @@ public class SoapUtils {
      * @return false if val is null or the boolean representation of val.
      */
     static boolean isRequest(final Object val) {
-        return val == null ? false : (Boolean) val;
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Is request [{0}] for val [{1}]", (val == null ? false : (Boolean) val), val);
     }
 
     /**
@@ -47,7 +64,7 @@ public class SoapUtils {
      * @return true if msgContext is a request or false if not.
      */
     public static boolean isRequest(final SOAPMessageContext msgContext) {
-        return isRequest(msgContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY));
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Is request [{0}] for SOAPMessageContext [{1}]", isRequest(msgContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)), msgContext);
     }
 
     /**
@@ -61,10 +78,10 @@ public class SoapUtils {
      */
     public static SOAPHeader getSoapHeader(final SOAPMessageContext msgContext) throws SOAPException {
         if (null != msgContext.getMessage().getSOAPPart().getEnvelope().getHeader()) {
-            return msgContext.getMessage().getSOAPPart().getEnvelope().getHeader();
+            return LoggerUtils.logF(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().getHeader(), msgContext);
         }
 
-        return msgContext.getMessage().getSOAPPart().getEnvelope().addHeader();
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().addHeader(), msgContext);
     }
 
     private SoapUtils() {

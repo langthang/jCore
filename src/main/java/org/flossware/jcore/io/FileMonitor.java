@@ -88,9 +88,7 @@ public class FileMonitor extends AbstractStringifiable {
      * @return true if the file exists or false if not.
      */
     public boolean exists() {
-        getLogger().log(Level.FINEST, "File, {0}, exists = {1}", new Object[]{getFile(), getFile().exists()});
-
-        return getFile().exists();
+        return logF(Level.FINEST, "File exists [{0}] for file [{1}]", getFile().exists(), getFile());
     }
 
     /**
@@ -104,7 +102,7 @@ public class FileMonitor extends AbstractStringifiable {
             return false;
         }
 
-        getLogger().log(Level.FINEST, "File, {0} lastModified on {1} -> {2}", new Object[]{getFile(), new Date(getFile().lastModified()), new Date(getLastModifiedObserved().get())});
+        log(Level.FINEST, "File, {0} lastModified on {1} -> {2}", getFile(), new Date(getFile().lastModified()), new Date(getLastModifiedObserved().get()));
 
         if (getFile().lastModified() == getLastModifiedObserved().get()) {
             return false;

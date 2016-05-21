@@ -101,6 +101,37 @@ public class ArrayIteratorTest {
     }
 
     /**
+     * Tests next() method going off edget.
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void test_next_noValues() {
+        final ArrayIterator itr = new ArrayIterator(new String[0]);
+
+        // This should blow up as expected.
+        itr.next();
+
+        Assert.fail("We should have failed calling next()");
+    }
+
+    /**
+     * Tests next() method going off edget.
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void test_next_tooMany() {
+        String[] values = new String[]{"zero", "one", "three"};
+        final ArrayIterator itr = new ArrayIterator(values);
+
+        Assert.assertSame("Should be same value", values[0], itr.next());
+        Assert.assertSame("Should be same value", values[1], itr.next());
+        Assert.assertSame("Should be same value", values[2], itr.next());
+
+        // This should blow up as expected.
+        itr.next();
+
+        Assert.fail("We should have failed calling next()");
+    }
+
+    /**
      * Tests next() method.
      */
     @Test
@@ -110,10 +141,10 @@ public class ArrayIteratorTest {
 
         Assert.assertSame("Should be same value", values[0], itr.next());
         Assert.assertSame("Should be same value", values[1], itr.next());
-        
+
         Assert.assertFalse("Should be no more elements", itr.hasNext());
     }
-    
+
     /**
      * Tests remove() method.
      */
@@ -121,41 +152,41 @@ public class ArrayIteratorTest {
     public void test_remove() {
         try {
             new ArrayIterator(new Object[0]).remove();
-            
+
             Assert.fail("Test should have failed!");
         } catch (final UnsupportedOperationException unsupportedOperationException) {
             Assert.assertEquals("Should be correct failure message", ArrayIterator.REMOVE_ERROR_MSG, unsupportedOperationException.getMessage());
-        }   
-        
+        }
+
         try {
             new ArrayIterator(new Object[]{"one", "two", "three"}).remove();
-            
+
             Assert.fail("Test should have failed!");
         } catch (final UnsupportedOperationException unsupportedOperationException) {
             Assert.assertEquals("Should be correct failure message", ArrayIterator.REMOVE_ERROR_MSG, unsupportedOperationException.getMessage());
-        }  
+        }
     }
-    
+
     /**
      * Tests iterating across the whole collection.
      */
     @Test
     public void test_iterate() {
         final Set<String> set = new TreeSet<>();
-        
+
         set.add("one");
         set.add("two");
         set.add("three");
-        
+
         int removed = 0;
         int count = set.size();
-        
+
         final ArrayIterator<String> itr = new ArrayIterator(set.toArray());
         while (itr.hasNext()) {
             Assert.assertTrue("Should have removed!", set.remove(itr.next()));
             removed++;
         }
-        
+
         Assert.assertTrue("Should be no more elements", set.isEmpty());
         Assert.assertEquals("Shouldbe the same number removed as in set", count, removed);
     }

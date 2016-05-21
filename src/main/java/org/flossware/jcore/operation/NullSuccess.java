@@ -16,6 +16,7 @@
  */
 package org.flossware.jcore.operation;
 
+import java.util.logging.Level;
 import org.flossware.jcore.AbstractCommonBase;
 
 /**
@@ -38,5 +39,6 @@ public class NullSuccess<V> extends AbstractCommonBase implements Success<V> {
      */
     @Override
     public void succeeded(final V success) {
+        log(Level.FINEST, "Succeeded [{0}]", success);
     }
 }

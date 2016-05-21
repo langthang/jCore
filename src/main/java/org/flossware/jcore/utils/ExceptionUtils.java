@@ -16,6 +16,7 @@
  */
 package org.flossware.jcore.utils;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -46,7 +47,7 @@ public class ExceptionUtils {
      * @return true if both throwable and containedThrowable are not null.
      */
     static boolean isContainsProcessable(final Throwable throwable, final Class containedThrowable) {
-        return null != throwable && null != containedThrowable;
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Contains processable [{0}] for throwable {1} and contained {2}", (null != throwable && null != containedThrowable), throwable, containedThrowable);
     }
 
     /**
@@ -61,12 +62,18 @@ public class ExceptionUtils {
      */
     public static <T extends Throwable> boolean contains(final Throwable throwable, final Class<T> containedThrowable) {
         if (!isContainsProcessable(throwable, containedThrowable)) {
+            LoggerUtils.log(getLogger(), Level.FINEST, "The throwable {0} is NOT contained in {1}", containedThrowable, throwable);
+
             return false;
         }
 
         if (containedThrowable.isAssignableFrom(throwable.getClass())) {
+            LoggerUtils.log(getLogger(), Level.FINEST, "The throwable {0} IS contained in {1}", containedThrowable, throwable);
+
             return true;
         }
+
+        LoggerUtils.log(getLogger(), Level.FINEST, "Examinging the cause {0} for containment of {1}", throwable.getCause(), containedThrowable);
 
         return contains(throwable.getCause(), containedThrowable);
     }
@@ -80,7 +87,10 @@ public class ExceptionUtils {
      * @return if throwable or its root causes is an contained, or false if not.
      */
     public static boolean contains(final Throwable throwable, final Throwable containedThrowable) {
-        return contains(throwable, ObjectUtils.ensureObject(containedThrowable, "Must have a throwable to check").getClass());
+        return LoggerUtils.logF(getLogger(), Level.FINEST,
+                "Contains [{0}] for the containment of {1} in {2}",
+                contains(throwable, ObjectUtils.ensureObject(containedThrowable, "Must have a throwable to check").getClass()),
+                containedThrowable, throwable);
     }
 
     /**

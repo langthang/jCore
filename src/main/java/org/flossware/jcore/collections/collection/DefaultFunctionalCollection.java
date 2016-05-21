@@ -47,6 +47,6 @@ public class DefaultFunctionalCollection<V> extends AbstractFunctionalCollection
      * @throws IllegalArgumentException if <code>collection</code> is null.
      */
     public DefaultFunctionalCollection(final Collection<V> collection) {
-        this.collection = CollectionUtils.ensureCollection(collection, 0, "Collection cannot be null!");;
+        this.collection = CollectionUtils.ensureCollection(collection, 0, "Collection cannot be null!");
     }
 }

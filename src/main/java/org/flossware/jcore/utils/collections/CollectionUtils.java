@@ -75,10 +75,10 @@ public class CollectionUtils {
     /**
      * Ensures collection is not empty or null.
      *
-     * @param <C>        the collection to examine for a size.
+     * @param <C> the collection to examine for a size.
      * @param collection to check for null/empty.
-     * @param minSize    the minimum size of the collection.
-     * @param errorMsg   the message within the IllegalArgumentException if empty or null.
+     * @param minSize the minimum size of the collection.
+     * @param errorMsg the message within the IllegalArgumentException if empty or null.
      *
      * @return collection if it is not null and of minimum size minSize.
      *
@@ -101,10 +101,10 @@ public class CollectionUtils {
     /**
      * Ensures list is not empty or null.
      *
-     * @param <C>        the collection to examine for a size.
+     * @param <C> the collection to examine for a size.
      *
      * @param collection to check for null/empty.
-     * @param errorMsg   the message within the IllegalArgumentException if empty or null.
+     * @param errorMsg the message within the IllegalArgumentException if empty or null.
      *
      * @return collection if it is not null and contains DEFAULT_MIN_LIST_SIZE elements.
      *
@@ -117,9 +117,9 @@ public class CollectionUtils {
     /**
      * Ensures list is not empty or null.
      *
-     * @param <C>        the collection to examine for a size.
+     * @param <C> the collection to examine for a size.
      * @param collection to check for null/empty.
-     * @param minSize    the minimum size of the list.
+     * @param minSize the minimum size of the list.
      *
      * @return collection if it is not null and contains minSize elements.
      *
@@ -132,7 +132,7 @@ public class CollectionUtils {
     /**
      * Ensures list is not empty or null.
      *
-     * @param <C>        the collection to examine for a size.
+     * @param <C> the collection to examine for a size.
      * @param collection to check for null/empty.
      *
      * @return collection if it is not null and contains DEFAULT_MIN_LIST_SIZE elements.
@@ -146,20 +146,20 @@ public class CollectionUtils {
     /**
      * Only add a value if <code>isToAdd</code> is true.
      *
-     * @param <V>        the type contained in <code>collection</code>.
+     * @param <V> the type contained in <code>collection</code>.
      *
      * @param collection the collection to be added to.
-     * @param value      the value to add to collection.
-     * @param isToAdd    if true, <code>value</code> will be added to <code>collection</code>, false it will not be added.
+     * @param value the value to add to collection.
+     * @param isToAdd if true, <code>value</code> will be added to <code>collection</code>, false it will not be added.
      *
      * @return the collection added to.
      */
     public static <V> Collection<V> addValue(final Collection<V> collection, final V value, final boolean isToAdd) {
-        ensureCollection(collection, 0, COLLECTION_ERROR_MSG);
-
-        if (isToAdd) {
-            collection.add(value);
+        if (!isToAdd) {
+            return collection;
         }
+
+        ensureCollection(collection, 0, COLLECTION_ERROR_MSG).add(value);
 
         return collection;
     }
@@ -167,7 +167,7 @@ public class CollectionUtils {
     /**
      * Turns toCopy into a list.
      *
-     * @param <V>    the type of data to copy.
+     * @param <V> the type of data to copy.
      * @param toCopy the collection to copy.
      *
      * @return a new list.
@@ -186,7 +186,7 @@ public class CollectionUtils {
     /**
      * Turns toCopy into a list.
      *
-     * @param <V>    the type of data to copy.
+     * @param <V> the type of data to copy.
      * @param toCopy the collection to copy.
      *
      * @return a new list.
@@ -206,7 +206,7 @@ public class CollectionUtils {
     /**
      * Turns toCopy into a set.
      *
-     * @param <V>    the type of data to copy.
+     * @param <V> the type of data to copy.
      * @param toCopy the collection to copy.
      *
      * @return a new list.
@@ -226,9 +226,9 @@ public class CollectionUtils {
     /**
      * Take a collection and sort it, returning a new collection of the sort.
      *
-     * @param <V>        the type to sort.
+     * @param <V> the type to sort.
      *
-     * @param toSort     the collection to sort - will not be affected.
+     * @param toSort the collection to sort - will not be affected.
      * @param comparator will perform comparisons for sort order.
      *
      * @return a newly sorted collection.
@@ -249,12 +249,12 @@ public class CollectionUtils {
     /**
      * Filter a collection.
      *
-     * @param <T>        the type to filter upon.
-     * @param <V>        the value to find.
+     * @param <T> the type to filter upon.
+     * @param <V> the value to find.
      *
      * @param collection is the collection to filter.
-     * @param filter     is the filter to apply.
-     * @param value      the value to search for.
+     * @param filter is the filter to apply.
+     * @param value the value to search for.
      *
      * @return a collection of those items in the collection that satisfy the filter.
      *
@@ -268,6 +268,8 @@ public class CollectionUtils {
         for (final T toFilter : collection) {
             addValue(retVal, toFilter, filter.accept(toFilter, value));
         }
+
+        getLogger().log(Level.FINE, "Filtered {0}", retVal);
 
         return retVal;
     }

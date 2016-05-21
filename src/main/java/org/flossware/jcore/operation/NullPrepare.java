@@ -16,6 +16,7 @@
  */
 package org.flossware.jcore.operation;
 
+import java.util.logging.Level;
 import org.flossware.jcore.AbstractCommonBase;
 
 /**
@@ -38,7 +39,6 @@ public class NullPrepare<V> extends AbstractCommonBase implements Prepare<V> {
      */
     @Override
     public V prepare(final V toPrepare) {
-        return toPrepare;
+        return logF(Level.FINEST, "Prepare [{0}]", toPrepare);
     }
-
 }

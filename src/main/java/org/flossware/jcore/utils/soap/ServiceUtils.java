@@ -20,10 +20,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
+import org.flossware.jcore.utils.LoggerUtils;
 import org.flossware.jcore.utils.ObjectUtils;
 
 /**
@@ -32,6 +35,20 @@ import org.flossware.jcore.utils.ObjectUtils;
  * @author sfloess
  */
 public class ServiceUtils {
+
+    /**
+     * Our logger.
+     */
+    private static final Logger logger = Logger.getLogger(ServiceUtils.class.getName());
+
+    /**
+     * Return the logger.
+     *
+     * @return the logger.
+     */
+    private static Logger getLogger() {
+        return logger;
+    }
 
     /**
      * Compute a QName from a WebServiceClient annotation.
@@ -45,7 +62,7 @@ public class ServiceUtils {
     static QName computeQName(final WebServiceClient webServiceClient) {
         ObjectUtils.ensureObject(webServiceClient, "Must have a WebServiceClient annotation");
 
-        return new QName(webServiceClient.targetNamespace(), webServiceClient.name());
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "QName is [{0}] for web service client [{1}]", new QName(webServiceClient.targetNamespace(), webServiceClient.name()), webServiceClient);
     }
 
     /**
@@ -58,7 +75,7 @@ public class ServiceUtils {
     public static boolean isWebEndpoint(final Method method) {
         ObjectUtils.ensureObject(method, "Must provide a method!");
 
-        return null != method.getAnnotation(WebEndpoint.class);
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Web endpoint [{0}] for method [{1}]", (null != method.getAnnotation(WebEndpoint.class)), method);
     }
 
     /**
@@ -75,6 +92,8 @@ public class ServiceUtils {
     public static <S extends Service> Method getPortMethod(final Class<S> serviceClass) {
         for (final Method method : serviceClass.getDeclaredMethods()) {
             if (isWebEndpoint(method)) {
+                LoggerUtils.logF(getLogger(), Level.FINEST, "Method [{0}] is port method on service class [{1}]", method, serviceClass);
+
                 return method;
             }
         }
@@ -94,7 +113,7 @@ public class ServiceUtils {
      * @throws IllegalArgumentException if serviceClass has not port method.
      */
     public static <S extends Service> Class getPortType(final Class<S> serviceClass) {
-        return getPortMethod(serviceClass).getReturnType();
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Port type is [{0}] for serviceClass [{1}]", getPortMethod(serviceClass).getReturnType(), serviceClass);
     }
 
     /**
@@ -109,7 +128,7 @@ public class ServiceUtils {
      * @throws IllegalArgumentException if serviceClass has not port method.
      */
     public static <S extends Service> String getPortName(final Class<S> serviceClass) {
-        return getPortMethod(serviceClass).getAnnotation(WebEndpoint.class).name();
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Port name is [{0}] for serviceClass [{1}]", getPortMethod(serviceClass).getAnnotation(WebEndpoint.class).name(), serviceClass);
     }
 
     /**
@@ -124,7 +143,7 @@ public class ServiceUtils {
      * @throws IllegalArgumentException if serviceClass has not port method.
      */
     public static <S extends Service> QName getServiceName(final Class<S> serviceClass) {
-        return computeQName(ObjectUtils.ensureObject(serviceClass, "Must have a service class").getAnnotation(WebServiceClient.class));
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "QName is [{0}] for serviceClass [{1}]", computeQName(ObjectUtils.ensureObject(serviceClass, "Must have a service class").getAnnotation(WebServiceClient.class)), serviceClass);
     }
 
     /**
@@ -143,7 +162,7 @@ public class ServiceUtils {
         ObjectUtils.ensureObject(serviceClass, "Must have a service");
 
         try {
-            return (S) serviceClass.getConstructor(URL.class).newInstance(wsdlResource);
+            return LoggerUtils.logF(getLogger(), Level.FINEST, "Service is [{0}] for service class [{1}] and wsl resource [{2}]", serviceClass.getConstructor(URL.class).newInstance(wsdlResource), serviceClass, wsdlResource);
         } catch (final NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             throw new IllegalArgumentException("Trouble creating service", ex);
         }
@@ -163,7 +182,7 @@ public class ServiceUtils {
      */
     public static <S extends Service> S createService(final Class<S> serviceClass, final String wsdlResource) {
         try {
-            return createService(ObjectUtils.ensureObject(serviceClass, "Must have a service"), new URL(wsdlResource));
+            return LoggerUtils.logF(getLogger(), Level.FINEST, "Service is [{0}] for service class [{1}] and wsl resource string [{1}]", createService(ObjectUtils.ensureObject(serviceClass, "Must have a service"), new URL(wsdlResource)), serviceClass, wsdlResource);
         } catch (MalformedURLException ex) {
             throw new IllegalArgumentException("Trouble creating URL for WSDL resource [" + wsdlResource + "]", ex);
         }

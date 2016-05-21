@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.flossware.jcore.utils.collections.ArrayUtils;
 
 /**
@@ -24,6 +26,18 @@ import org.flossware.jcore.utils.collections.ArrayUtils;
  * @author Scot P. Floess
  */
 public class StringUtils {
+
+    /**
+     * Our logger.
+     */
+    private static final Logger logger = Logger.getLogger(StringUtils.class.getName());
+
+    /**
+     * Return the logger.
+     */
+    private static Logger getLogger() {
+        return logger;
+    }
 
     /**
      * Default separator.
@@ -38,7 +52,7 @@ public class StringUtils {
      * @return true if <code>str</code> is null or empty.
      */
     public static boolean isBlank(final String str) {
-        return null == str || "".equals(str.trim());
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Is string blank [{0}] for string [{1}]", (null == str || "".equals(str.trim())), str);
     }
 
     /**
@@ -82,7 +96,7 @@ public class StringUtils {
      * @return true if we can append a separator or false if not.
      */
     static boolean isSeparatorAppendable(final String separator, final int index, final Object... objs) {
-        return index <= (objs.length - 2) && !objs[index].toString().endsWith(separator);
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Is the separator appendable [{0}] for index [{1}]", (null != objs && index <= (objs.length - 2) && !objs[index].toString().endsWith(separator)), index);
     }
 
     /**
@@ -98,7 +112,7 @@ public class StringUtils {
         ArrayUtils.ensureArray(objs, "Must have a list of objects to concat!");
 
         if (objs.length < 2 && !isSeparatorAtEnd) {
-            return objs[0].toString();
+            return LoggerUtils.logF(getLogger(), Level.FINEST, "Returning [{0}] for length [{1}] and isSeparatorAtEnd [{2}]", objs[0].toString(), objs.length, isSeparatorAtEnd);
         }
 
         final StringBuilder sb = new StringBuilder();
@@ -115,7 +129,7 @@ public class StringUtils {
             sb.append(separator);
         }
 
-        return sb.toString();
+        return LoggerUtils.logF(getLogger(), Level.FINEST, "Returning [{0}]", sb.toString());
     }
 
     /**
