@@ -63,7 +63,7 @@ public class UrlUtils {
      */
     public static URL createUrl(final String rawUrl) {
         try {
-            return LoggerUtils.logF(getLogger(), Level.FINEST, "URL [{0}] for string [{1}]", new URL(rawUrl), rawUrl);
+            return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "URL [{0}] for string [{1}]", new URL(rawUrl), rawUrl);
         } catch (final MalformedURLException malformedUrlException) {
             getLogger().log(Level.SEVERE, "Trouble getting protocol and host [{0}]", malformedUrlException.getMessage());
 
@@ -83,7 +83,7 @@ public class UrlUtils {
     public static String computeHostUrlAsString(final String rawUrl) {
         final URL url = createUrl(rawUrl);
 
-        return LoggerUtils.logF(getLogger(), Level.FINEST, "String URL [{0}] for raw string [{1}]", StringUtils.concat(url.getProtocol(), PROTOCOL_SEPARATOR, url.getHost()), rawUrl);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "String URL [{0}] for raw string [{1}]", StringUtils.concat(url.getProtocol(), PROTOCOL_SEPARATOR, url.getHost()), rawUrl);
     }
 
     /**
@@ -95,7 +95,7 @@ public class UrlUtils {
      */
     public static URL computeHostUrl(final String rawUrl) {
         try {
-            return LoggerUtils.logF(getLogger(), Level.FINEST, "Host URL [{0}] for raw string [{1}]", new URL(computeHostUrlAsString(rawUrl)), rawUrl);
+            return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Host URL [{0}] for raw string [{1}]", new URL(computeHostUrlAsString(rawUrl)), rawUrl);
         } catch (final MalformedURLException malformedUrlException) {
             throw new UrlException(malformedUrlException);
         }

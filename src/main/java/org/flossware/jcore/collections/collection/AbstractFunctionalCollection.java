@@ -94,7 +94,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public int size() {
-        return logF(Level.FINEST, "Size [{0}]", getCollection().size());
+        return logAndReturn(Level.FINEST, "Size [{0}]", getCollection().size());
     }
 
     /**
@@ -102,7 +102,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean isEmpty() {
-        return logF(Level.FINEST, "Is empty [{0}]", getCollection().isEmpty());
+        return logAndReturn(Level.FINEST, "Is empty [{0}]", getCollection().isEmpty());
     }
 
     /**
@@ -110,7 +110,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean contains(final Object o) {
-        return logFi(Level.FINEST, "Object [{0}] contained [{1}]", 1, o, getCollection().contains(o));
+        return logAndReturnByIndex(Level.FINEST, "Object [{0}] contained [{1}]", 1, o, getCollection().contains(o));
     }
 
     /**
@@ -142,7 +142,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean add(final V e) {
-        return logF(Level.FINEST, "Attempting add result [{0}] for [{1}]", getCollection().add(e), e);
+        return logAndReturn(Level.FINEST, "Attempting add result [{0}] for [{1}]", getCollection().add(e), e);
     }
 
     /**
@@ -150,7 +150,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean remove(final Object o) {
-        return logF(Level.FINEST, "Attempting remove result [{0}] for [{1}]", getCollection().remove(o), o);
+        return logAndReturn(Level.FINEST, "Attempting remove result [{0}] for [{1}]", getCollection().remove(o), o);
     }
 
     /**
@@ -158,7 +158,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean containsAll(final Collection<?> clctn) {
-        return logF(Level.FINEST, "Contains all result [{0}] in {1}", clctn, getCollection().containsAll(clctn), clctn);
+        return logAndReturn(Level.FINEST, "Contains all result [{0}] in {1}", clctn, getCollection().containsAll(clctn), clctn);
     }
 
     /**
@@ -166,7 +166,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean addAll(final Collection<? extends V> clctn) {
-        return logF(Level.FINEST, "Add all result [{0}] in {1}", getCollection().addAll(clctn), clctn);
+        return logAndReturn(Level.FINEST, "Add all result [{0}] in {1}", getCollection().addAll(clctn), clctn);
     }
 
     /**
@@ -174,7 +174,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean retainAll(final Collection<?> clctn) {
-        return logF(Level.FINEST, "Retaining all result [{0}] in {1}", getCollection().retainAll(clctn), clctn);
+        return logAndReturn(Level.FINEST, "Retaining all result [{0}] in {1}", getCollection().retainAll(clctn), clctn);
     }
 
     /**
@@ -182,7 +182,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean removeAll(final Collection<?> clctn) {
-        return logF(Level.FINEST, "Removal result [{0}] from {1}", getCollection().removeAll(clctn), clctn);
+        return logAndReturn(Level.FINEST, "Removal result [{0}] from {1}", getCollection().removeAll(clctn), clctn);
     }
 
     /**

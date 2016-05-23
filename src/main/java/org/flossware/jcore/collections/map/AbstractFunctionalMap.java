@@ -83,7 +83,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public int size() {
-        return logF(Level.FINEST, "Size [{0}]", getMap().size());
+        return logAndReturn(Level.FINEST, "Size [{0}]", getMap().size());
     }
 
     /**
@@ -91,7 +91,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public boolean isEmpty() {
-        return logF(Level.FINEST, "Map empty [{0}]", getMap().isEmpty());
+        return logAndReturn(Level.FINEST, "Map empty [{0}]", getMap().isEmpty());
     }
 
     /**
@@ -99,7 +99,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public boolean containsKey(final Object o) {
-        return logF(Level.FINEST, "Map contains key result [{0}] for key [{1}]", getMap().containsKey(o), o);
+        return logAndReturn(Level.FINEST, "Map contains key result [{0}] for key [{1}]", getMap().containsKey(o), o);
     }
 
     /**
@@ -107,7 +107,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public boolean containsValue(final Object o) {
-        return logF(Level.FINEST, "Map contains value result [{0}] for value [{1}]", getMap().containsValue(o), 0);
+        return logAndReturn(Level.FINEST, "Map contains value result [{0}] for value [{1}]", getMap().containsValue(o), 0);
     }
 
     /**
@@ -115,7 +115,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public V get(final Object o) {
-        return logF(Level.FINEST, "Retrieved value [{0}] for key [{1}]", getMap().get(o), o);
+        return logAndReturn(Level.FINEST, "Retrieved value [{0}] for key [{1}]", getMap().get(o), o);
     }
 
     /**
@@ -123,7 +123,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public V put(final K k, final V v) {
-        return logF(Level.FINEST, "Put yielded [{0}] for [{1}] -> [{2}]", getMap().put(k, v), k, v);
+        return logAndReturn(Level.FINEST, "Put yielded [{0}] for [{1}] -> [{2}]", getMap().put(k, v), k, v);
     }
 
     /**
@@ -131,7 +131,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public V remove(Object o) {
-        return logF(Level.FINEST, "Removed [{0}] for key [{1}]", getMap().remove(o), o);
+        return logAndReturn(Level.FINEST, "Removed [{0}] for key [{1}]", getMap().remove(o), o);
     }
 
     /**
@@ -159,7 +159,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public Set<K> keySet() {
-        return logF(Level.FINEST, "Returning key set {0}", getMap().keySet());
+        return logAndReturn(Level.FINEST, "Returning key set {0}", getMap().keySet());
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public Collection<V> values() {
-        return logF(Level.FINEST, "Returning values {0}", getMap().values());
+        return logAndReturn(Level.FINEST, "Returning values {0}", getMap().values());
     }
 
     /**
@@ -175,6 +175,6 @@ public abstract class AbstractFunctionalMap<K, V> extends AbstractCommonBase imp
      */
     @Override
     public Set<Entry<K, V>> entrySet() {
-        return logF(Level.FINEST, "Returning entry set {0}", getMap().entrySet());
+        return logAndReturn(Level.FINEST, "Returning entry set {0}", getMap().entrySet());
     }
 }

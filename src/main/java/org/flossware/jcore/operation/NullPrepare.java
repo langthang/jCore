@@ -39,6 +39,6 @@ public class NullPrepare<V> extends AbstractCommonBase implements Prepare<V> {
      */
     @Override
     public V prepare(final V toPrepare) {
-        return logF(Level.FINEST, "Prepare [{0}]", toPrepare);
+        return logAndReturn(Level.FINEST, "Prepare [{0}]", toPrepare);
     }
 }

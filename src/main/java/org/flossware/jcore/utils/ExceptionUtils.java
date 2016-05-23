@@ -47,7 +47,7 @@ public class ExceptionUtils {
      * @return true if both throwable and containedThrowable are not null.
      */
     static boolean isContainsProcessable(final Throwable throwable, final Class containedThrowable) {
-        return LoggerUtils.logF(getLogger(), Level.FINEST, "Contains processable [{0}] for throwable {1} and contained {2}", (null != throwable && null != containedThrowable), throwable, containedThrowable);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Contains processable [{0}] for throwable {1} and contained {2}", (null != throwable && null != containedThrowable), throwable, containedThrowable);
     }
 
     /**
@@ -87,7 +87,7 @@ public class ExceptionUtils {
      * @return if throwable or its root causes is an contained, or false if not.
      */
     public static boolean contains(final Throwable throwable, final Throwable containedThrowable) {
-        return LoggerUtils.logF(getLogger(), Level.FINEST,
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST,
                 "Contains [{0}] for the containment of {1} in {2}",
                 contains(throwable, ObjectUtils.ensureObject(containedThrowable, "Must have a throwable to check").getClass()),
                 containedThrowable, throwable);

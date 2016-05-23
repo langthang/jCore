@@ -55,35 +55,35 @@ public class AbstractCommonBaseTest {
      * Tests we log and return the correct value.
      */
     @Test
-    public void test_logF_V() {
+    public void test_logAndReturn_V() {
         final String toCompare = TestUtils.generateUniqueStr("0");
 
-        Assert.assertSame("Should have gotten correct return value", toCompare, new Stub().logF(Level.SEVERE, "This is it {0}", toCompare));
+        Assert.assertSame("Should have gotten correct return value", toCompare, new Stub().logAndReturn(Level.SEVERE, "This is it {0}", toCompare));
     }
 
     /**
      * Tests we log and return the correct value from the var args.
      */
     @Test
-    public void test_logFi_varArgs() {
+    public void test_logAndReturnByIndex_varArgs() {
         final String str0 = TestUtils.generateUniqueStr("0");
         final String str1 = TestUtils.generateUniqueStr("1");
         final String str2 = TestUtils.generateUniqueStr("2");
         final String str3 = TestUtils.generateUniqueStr("3");
 
-        Assert.assertSame("Should have gotten correct return value", str2, new Stub().logFi(Level.SEVERE, "This is it {0} {1} {2} {3}", 2, str0, str1, str2, str3));
+        Assert.assertSame("Should have gotten correct return value", str2, new Stub().logAndReturnByIndex(Level.SEVERE, "This is it {0} {1} {2} {3}", 2, str0, str1, str2, str3));
     }
 
     /**
      * Tests we log and return the correct value from the var args.
      */
     @Test
-    public void test_logF_varArgs() {
+    public void test_logAndReturn_varArgs() {
         final String str0 = TestUtils.generateUniqueStr("0");
         final String str1 = TestUtils.generateUniqueStr("1");
         final String str2 = TestUtils.generateUniqueStr("2");
         final String str3 = TestUtils.generateUniqueStr("3");
 
-        Assert.assertSame("Should have gotten correct return value", str0, new Stub().logF(Level.SEVERE, "This is it {0} {1} {2} {3}", str0, str1, str2, str3));
+        Assert.assertSame("Should have gotten correct return value", str0, new Stub().logAndReturn(Level.SEVERE, "This is it {0} {1} {2} {3}", str0, str1, str2, str3));
     }
 }

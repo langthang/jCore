@@ -62,7 +62,7 @@ import java.util.logging.Logger;
  *
  * <code>
  * public static Foo computeVal() {
- * return LoggerUtils.logF(getLogger(), Level.FINE, "The return value = {0}", someVal + someOtherVal);
+ *     return LoggerUtils.logAndReturn(getLogger(), Level.FINE, "The return value = {0}", someVal + someOtherVal);
  * }
  * </code>
  *
@@ -94,7 +94,7 @@ public class LoggerUtils {
      *
      * @return the object logged.
      */
-    public static <V> V logF(final Logger logger, final Level level, final String str, final V retVal) {
+    public static <V> V logAndReturn(final Logger logger, final Level level, final String str, final V retVal) {
         logger.log(level, str, retVal);
 
         return retVal;
@@ -113,14 +113,14 @@ public class LoggerUtils {
      *
      * @return the value found at index <code>index</code> in the var args <code>objs</code>.
      */
-    public static <V> V logFi(final Logger logger, final Level level, final String str, int index, final Object... objs) {
+    public static <V> V logAndReturnByIndex(final Logger logger, final Level level, final String str, int index, final Object... objs) {
         log(logger, level, str, objs);
 
         return (V) objs[index];
     }
 
     /**
-     * Log and return the value at found as the 0th index in the var arg <code>objs</code>.
+     * Log and return the value at found as the 0th index in the var args <code>objs</code>.
      *
      * @param <V> the type to return.
      *
@@ -131,8 +131,8 @@ public class LoggerUtils {
      *
      * @return the value found at 0th index in the var args <code>objs</code>.
      */
-    public static <V> V logF(final Logger logger, final Level level, final String str, final Object... objs) {
-        return logFi(logger, level, str, 0, objs);
+    public static <V> V logAndReturn(final Logger logger, final Level level, final String str, final Object... objs) {
+        return logAndReturnByIndex(logger, level, str, 0, objs);
     }
 
     /**

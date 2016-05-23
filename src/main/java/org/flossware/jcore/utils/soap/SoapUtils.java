@@ -53,7 +53,7 @@ public class SoapUtils {
      * @return false if val is null or the boolean representation of val.
      */
     static boolean isRequest(final Object val) {
-        return LoggerUtils.logF(getLogger(), Level.FINEST, "Is request [{0}] for val [{1}]", (val == null ? false : (Boolean) val), val);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is request [{0}] for val [{1}]", (val == null ? false : (Boolean) val), val);
     }
 
     /**
@@ -64,7 +64,7 @@ public class SoapUtils {
      * @return true if msgContext is a request or false if not.
      */
     public static boolean isRequest(final SOAPMessageContext msgContext) {
-        return LoggerUtils.logF(getLogger(), Level.FINEST, "Is request [{0}] for SOAPMessageContext [{1}]", isRequest(msgContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)), msgContext);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is request [{0}] for SOAPMessageContext [{1}]", isRequest(msgContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)), msgContext);
     }
 
     /**
@@ -78,10 +78,10 @@ public class SoapUtils {
      */
     public static SOAPHeader getSoapHeader(final SOAPMessageContext msgContext) throws SOAPException {
         if (null != msgContext.getMessage().getSOAPPart().getEnvelope().getHeader()) {
-            return LoggerUtils.logF(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().getHeader(), msgContext);
+            return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().getHeader(), msgContext);
         }
 
-        return LoggerUtils.logF(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().addHeader(), msgContext);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().addHeader(), msgContext);
     }
 
     private SoapUtils() {

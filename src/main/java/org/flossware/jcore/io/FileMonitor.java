@@ -88,7 +88,7 @@ public class FileMonitor extends AbstractStringifiable {
      * @return true if the file exists or false if not.
      */
     public boolean exists() {
-        return logF(Level.FINEST, "File exists [{0}] for file [{1}]", getFile().exists(), getFile());
+        return logAndReturn(Level.FINEST, "File exists [{0}] for file [{1}]", getFile().exists(), getFile());
     }
 
     /**

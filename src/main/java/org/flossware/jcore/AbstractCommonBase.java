@@ -70,13 +70,13 @@ public abstract class AbstractCommonBase {
      *
      * @return the object logged.
      */
-    protected <V> V logF(final Level level, final String str, final V retVal) {
-        return LoggerUtils.logF(getLogger(), level, str, retVal);
+    protected <V> V logAndReturn(final Level level, final String str, final V retVal) {
+        return LoggerUtils.logAndReturn(getLogger(), level, str, retVal);
     }
 
     /**
      * Log and return the value thats found at <code>index</code> in the var arg <code>objs</code>. The "i" in LogFi stands for
-     * integer position. Without a unique name on this method, there is conflict in calling the logF() counterpart.
+ integer position. Without a unique name on this method, there is conflict in calling the logAndReturn() counterpart.
      *
      * @param <V> the type to return.
      *
@@ -87,8 +87,8 @@ public abstract class AbstractCommonBase {
      *
      * @return the value found at index <code>index</code> in the var args <code>objs</code>.
      */
-    protected <V> V logFi(final Level level, final String str, final int index, final Object... objs) {
-        return LoggerUtils.logFi(getLogger(), level, str, index, objs);
+    protected <V> V logAndReturnByIndex(final Level level, final String str, final int index, final Object... objs) {
+        return LoggerUtils.logAndReturnByIndex(getLogger(), level, str, index, objs);
     }
 
     /**
@@ -102,8 +102,8 @@ public abstract class AbstractCommonBase {
      *
      * @return the value found at 0th index in the var args <code>objs</code>.
      */
-    protected <V> V logF(final Level level, final String str, final Object... objs) {
-        return LoggerUtils.logF(getLogger(), level, str, objs);
+    protected <V> V logAndReturn(final Level level, final String str, final Object... objs) {
+        return LoggerUtils.logAndReturn(getLogger(), level, str, objs);
     }
 
 }
