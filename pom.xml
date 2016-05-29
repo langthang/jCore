@@ -17,7 +17,7 @@
 	<packaging>jar</packaging>
 
 	<name>FlossWare jCore Library</name>
-    <description>This project specializes is a utility library that can be reused across projects.</description>
+    <description>This project is a utility library that can be reused across projects.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
