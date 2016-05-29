@@ -190,7 +190,7 @@
 <th>FlossWare jCore Library</th></tr>
 <tr class="b">
 <td>
-<p><b>Description: </b>There is currently no description associated with this project.</p>
+<p><b>Description: </b>This project specializes is a utility library that can be reused across projects.</p>
 <p><b>URL: </b><a class="externalLink" href="https://github.com/FlossWare/jCore">https://github.com/FlossWare/jCore</a></p>
 <p><b>Project Licenses: </b><a class="externalLink" href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU General Public License, Version 3</a></p></td></tr></table></div>
 <ul>
@@ -329,46 +329,55 @@
 <th>Repo ID</th>
 <th>URL</th>
 <th>Release</th>
-<th>Snapshot</th></tr>
+<th>Snapshot</th>
+<th>Blacklisted</th></tr>
 <tr class="b">
 <td>bintray-solenopsis-maven</td>
 <td><a class="externalLink" href="http://dl.bintray.com/solenopsis/maven">http://dl.bintray.com/solenopsis/maven</a></td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td></tr>
 <tr class="a">
 <td>bintray-flossware-maven</td>
 <td><a class="externalLink" href="http://dl.bintray.com/flossware/maven">http://dl.bintray.com/flossware/maven</a></td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td></tr>
 <tr class="b">
 <td>bintray-scalaz</td>
 <td><a class="externalLink" href="http://dl.bintray.com/scalaz/releases">http://dl.bintray.com/scalaz/releases</a></td>
 <td>Yes</td>
-<td>Yes</td></tr>
+<td>Yes</td>
+<td>No</td></tr>
 <tr class="a">
 <td>jboss-public-repository-group</td>
 <td><a class="externalLink" href="http://repository.jboss.org/nexus/content/groups/public-jboss/">http://repository.jboss.org/nexus/content/groups/public-jboss/</a></td>
 <td>Yes</td>
-<td>Yes</td></tr>
+<td>Yes</td>
+<td>No</td></tr>
 <tr class="b">
 <td>bintray-jared-sprague</td>
 <td><a class="externalLink" href="http://dl.bintray.com/jared-sprague/maven">http://dl.bintray.com/jared-sprague/maven</a></td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td></tr>
 <tr class="a">
 <td>central</td>
 <td><a class="externalLink" href="http://repo.maven.apache.org/maven2">http://repo.maven.apache.org/maven2</a></td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td></tr>
 <tr class="b">
 <td>jboss-eap-repository</td>
 <td><a class="externalLink" href="http://maven.repository.redhat.com/techpreview/all/">http://maven.repository.redhat.com/techpreview/all/</a></td>
 <td>Yes</td>
-<td>No</td></tr>
+<td>No</td>
+<td>Yes</td></tr>
 <tr class="a">
 <td>maven2-central-repository</td>
 <td><a class="externalLink" href="http://central.maven.org/maven2/">http://central.maven.org/maven2/</a></td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td></tr></table>
 <p>Repository locations for each of the Dependencies.</p>
 <table border="0" class="bodyTable">
@@ -380,7 +389,6 @@
 <th>jboss-public-repository-group</th>
 <th>bintray-jared-sprague</th>
 <th>central</th>
-<th>jboss-eap-repository</th>
 <th>maven2-central-repository</th></tr>
 <tr class="b">
 <td>junit:junit:jar:4.11</td>
@@ -390,7 +398,6 @@
 <td><a class="externalLink" href="http://repository.jboss.org/nexus/content/groups/public-jboss//junit/junit/4.11/junit-4.11.jar"><img alt="Found at http://repository.jboss.org/nexus/content/groups/public-jboss/" src="images/icon_success_sml.gif" /></a></td>
 <td>-</td>
 <td><a class="externalLink" href="http://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
-<td>-</td>
 <td><a class="externalLink" href="http://central.maven.org/maven2//junit/junit/4.11/junit-4.11.jar"><img alt="Found at http://central.maven.org/maven2/" src="images/icon_success_sml.gif" /></a></td></tr>
 <tr class="a">
 <td>log4j:log4j:jar:1.2.14</td>
@@ -400,7 +407,6 @@
 <td><a class="externalLink" href="http://repository.jboss.org/nexus/content/groups/public-jboss//log4j/log4j/1.2.14/log4j-1.2.14.jar"><img alt="Found at http://repository.jboss.org/nexus/content/groups/public-jboss/" src="images/icon_success_sml.gif" /></a></td>
 <td>-</td>
 <td><a class="externalLink" href="http://repo.maven.apache.org/maven2/log4j/log4j/1.2.14/log4j-1.2.14.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
-<td>-</td>
 <td><a class="externalLink" href="http://central.maven.org/maven2//log4j/log4j/1.2.14/log4j-1.2.14.jar"><img alt="Found at http://central.maven.org/maven2/" src="images/icon_success_sml.gif" /></a></td></tr>
 <tr class="b">
 <td>org.hamcrest:hamcrest-core:jar:1.3</td>
@@ -410,7 +416,6 @@
 <td><a class="externalLink" href="http://repository.jboss.org/nexus/content/groups/public-jboss//org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><img alt="Found at http://repository.jboss.org/nexus/content/groups/public-jboss/" src="images/icon_success_sml.gif" /></a></td>
 <td>-</td>
 <td><a class="externalLink" href="http://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
-<td>-</td>
 <td><a class="externalLink" href="http://central.maven.org/maven2//org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"><img alt="Found at http://central.maven.org/maven2/" src="images/icon_success_sml.gif" /></a></td></tr>
 <tr class="a">
 <td>org.mockito:mockito-all:jar:1.9.5</td>
@@ -420,7 +425,6 @@
 <td><a class="externalLink" href="http://repository.jboss.org/nexus/content/groups/public-jboss//org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"><img alt="Found at http://repository.jboss.org/nexus/content/groups/public-jboss/" src="images/icon_success_sml.gif" /></a></td>
 <td>-</td>
 <td><a class="externalLink" href="http://repo.maven.apache.org/maven2/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"><img alt="Found at http://repo.maven.apache.org/maven2" src="images/icon_success_sml.gif" /></a></td>
-<td>-</td>
 <td><a class="externalLink" href="http://central.maven.org/maven2//org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar"><img alt="Found at http://central.maven.org/maven2/" src="images/icon_success_sml.gif" /></a></td></tr>
 <tr class="b">
 <th>Total</th>
@@ -430,7 +434,6 @@
 <th>jboss-public-repository-group</th>
 <th>bintray-jared-sprague</th>
 <th>central</th>
-<th>jboss-eap-repository</th>
 <th>maven2-central-repository</th></tr>
 <tr class="a">
 <td>4 (compile: 1, test: 2, provided: 1)</td>
@@ -440,7 +443,6 @@
 <td>4</td>
 <td>0</td>
 <td>4</td>
-<td>0</td>
 <td>4</td></tr></table></div>
       </div>
     </div>
