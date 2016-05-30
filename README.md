@@ -7,3 +7,4 @@ Welcome to jCore - the FlossWare Java Core Library!  This project specializes is
 You may find the following links useful:
 * [Maven Site Information] (http://flossware.github.io/jCore/)
 * [Java Docs] (http://flossware.github.io/jCore/apidocs/)
+* [Test Java Docs] (http://flossware.github.io/jCore/testapidocs/)
