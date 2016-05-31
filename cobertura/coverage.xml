@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.7282608695652174" branch-rate="0.8875" lines-covered="268" lines-valid="368" branches-covered="71" branches-valid="80" complexity="1.4076086956521738" version="2.1.1" timestamp="1464706609687">
+<coverage line-rate="0.7282608695652174" branch-rate="0.8875" lines-covered="268" lines-valid="368" branches-covered="71" branches-valid="80" complexity="1.4076086956521738" version="2.1.1" timestamp="1464718015393">
 	<sources>
 		<source>/var/lib/openshift/540b2c664382ec0a4f000622/app-root/data/workspace/FlossWare-jCore/target/generated-sources/annotations</source>
 		<source>--source</source>
