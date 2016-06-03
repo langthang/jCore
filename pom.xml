@@ -211,6 +211,9 @@
 
                 <configuration>
                     <onlyAnalyze>org.flossware.jcore.*</onlyAnalyze>
+
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
                 </configuration>
             </plugin>
         </plugins>
