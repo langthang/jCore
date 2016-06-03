@@ -158,7 +158,7 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
      */
     @Override
     public boolean containsAll(final Collection<?> clctn) {
-        return logAndReturn(Level.FINEST, "Contains all result [{0}] in {1}", clctn, getCollection().containsAll(clctn), clctn);
+        return logAndReturn(Level.FINEST, "Contains all result [{0}] in {1}", getCollection().containsAll(clctn), clctn);
     }
 
     /**
