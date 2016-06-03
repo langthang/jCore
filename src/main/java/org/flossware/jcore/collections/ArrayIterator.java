@@ -103,7 +103,7 @@ public class ArrayIterator<T> extends AbstractCommonBase implements Iterator<T> 
      */
     @Override
     public boolean hasNext() {
-        return logAndReturn(Level.FINEST, "Has more data [{0}]", (getIndex().intValue() < getValues().length));
+        return logAndReturn(Level.FINEST, "Has more data [{0}]", getIndex().intValue() < getValues().length);
     }
 
     /**

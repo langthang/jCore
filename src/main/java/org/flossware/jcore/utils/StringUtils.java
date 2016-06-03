@@ -52,7 +52,7 @@ public class StringUtils {
      * @return true if <code>str</code> is null or empty.
      */
     public static boolean isBlank(final String str) {
-        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is string blank [{0}] for string [{1}]", (null == str || "".equals(str.trim())), str);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is string blank [{0}] for string [{1}]", null == str || "".equals(str.trim()), str);
     }
 
     /**
@@ -96,7 +96,7 @@ public class StringUtils {
      * @return true if we can append a separator or false if not.
      */
     static boolean isSeparatorAppendable(final String separator, final int index, final Object... objs) {
-        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is the separator appendable [{0}] for index [{1}]", (null != objs && index <= (objs.length - 2) && !objs[index].toString().endsWith(separator)), index);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is the separator appendable [{0}] for index [{1}]", null != objs && index <= (objs.length - 2) && !objs[index].toString().endsWith(separator), index);
     }
 
     /**

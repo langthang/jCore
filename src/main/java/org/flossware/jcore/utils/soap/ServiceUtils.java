@@ -75,7 +75,7 @@ public class ServiceUtils {
     public static boolean isWebEndpoint(final Method method) {
         ObjectUtils.ensureObject(method, "Must provide a method!");
 
-        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Web endpoint [{0}] for method [{1}]", (null != method.getAnnotation(WebEndpoint.class)), method);
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Web endpoint [{0}] for method [{1}]", null != method.getAnnotation(WebEndpoint.class), method);
     }
 
     /**

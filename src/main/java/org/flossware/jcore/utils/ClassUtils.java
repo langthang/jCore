@@ -16,8 +16,6 @@
  */
 package org.flossware.jcore.utils;
 
-import java.util.logging.Logger;
-
 /**
  * Utility class for class functionality.
  *
@@ -25,18 +23,6 @@ import java.util.logging.Logger;
  */
 public class ClassUtils {
 
-    /**
-     * Our logger.
-     */
-    private static final Logger logger = Logger.getLogger(ClassUtils.class.getName());
-
-    /**
-     * Return the logger.
-     */
-    private static Logger getLogger() {
-        return logger;
-    }
-    
     /**
      * Compute the package for klass.
      *
@@ -47,7 +33,7 @@ public class ClassUtils {
     public static String getPackageName(final Class klass) {
         return ObjectUtils.ensureObject(klass, "Must have a class!").getPackage().getName();
     }
-    
+
     /**
      * Return the class for object.
      *
@@ -59,7 +45,7 @@ public class ClassUtils {
     public static <T> Class<T> getClass(final Object object) {
         return (Class<T>) ObjectUtils.ensureObject(object, "Must have an object!").getClass();
     }
-    
+
     /**
      * Default constructor not allowed.
      */

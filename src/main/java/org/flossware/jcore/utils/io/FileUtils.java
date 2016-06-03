@@ -19,7 +19,6 @@ package org.flossware.jcore.utils.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.logging.Logger;
 import org.flossware.jcore.io.FileException;
 import org.flossware.jcore.utils.ObjectUtils;
 import org.flossware.jcore.utils.StringUtils;
@@ -32,18 +31,6 @@ import org.flossware.jcore.utils.StringUtils;
 public class FileUtils {
 
     /**
-     * Our logger.
-     */
-    private static final Logger logger = Logger.getLogger(FileUtils.class.getName());
-
-    /**
-     * Return the logger.
-     */
-    private static Logger getLogger() {
-        return logger;
-    }
-
-    /**
      * Return a file input stream for file.
      *
      * @param file the file for whom we desire a file input stream.
@@ -51,8 +38,7 @@ public class FileUtils {
      * @return a file input stream.
      *
      * @throws IllegalArgumentException if file is null.
-     * @throws FileException            if there is any problem creating the
-     *                                  file input stream.
+     * @throws FileException if there is any problem creating the file input stream.
      */
     public static FileInputStream getFileInputStream(final File file) {
         try {
@@ -65,19 +51,17 @@ public class FileUtils {
     /**
      * Return a file input stream for file.
      *
-     * @param fileName the name of the file for whom we desire a file input
-     *                 stream.
+     * @param fileName the name of the file for whom we desire a file input stream.
      *
      * @return a file input stream.
      *
      * @throws IllegalArgumentException if fileName is null or empty.
-     * @throws FileException            if there is any problem creating the
-     *                                  file input stream.
+     * @throws FileException if there is any problem creating the file input stream.
      */
     public static FileInputStream getFileInputStream(final String fileName) {
         return getFileInputStream(new File(StringUtils.ensureString(fileName, "Cannot have a null or empty file name!")));
     }
-    
+
     /**
      * Default constructor not allowed.
      */

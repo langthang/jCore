@@ -16,29 +16,14 @@
  */
 package org.flossware.jcore.utils.collections;
 
-import java.util.logging.Logger;
 import org.flossware.jcore.utils.ObjectUtils;
 
 /**
  * Array utility class.
- * 
+ *
  * @author flossware
  */
 public class ArrayUtils {
-
-    /**
-     * Our logger.
-     */
-    private static final Logger logger = Logger.getLogger(ArrayUtils.class.getName());
-
-    /**
-     * Return the logger.
-     *
-     * @return the logger.
-     */
-    private static Logger getLogger() {
-        return logger;
-    }
 
     /**
      * Default minimum size for an array.
