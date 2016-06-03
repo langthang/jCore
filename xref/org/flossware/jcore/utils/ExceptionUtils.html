@@ -55,7 +55,7 @@
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     * @return true if both throwable and containedThrowable are not null.</em>
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> isContainsProcessable(<strong class="jxr_keyword">final</strong> Throwable throwable, <strong class="jxr_keyword">final</strong> Class containedThrowable) {
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Contains processable [{0}] for throwable {1} and contained {2}"</span>, (<strong class="jxr_keyword">null</strong> != throwable &amp;&amp; <strong class="jxr_keyword">null</strong> != containedThrowable), throwable, containedThrowable);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Contains processable [{0}] for throwable {1} and contained {2}"</span>, <strong class="jxr_keyword">null</strong> != throwable &amp;&amp; <strong class="jxr_keyword">null</strong> != containedThrowable, throwable, containedThrowable);
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      }
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      <em class="jxr_javadoccomment">/**</em>

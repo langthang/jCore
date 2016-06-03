@@ -83,7 +83,7 @@
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> isWebEndpoint(<strong class="jxr_keyword">final</strong> Method method) {
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>          ObjectUtils.ensureObject(method, <span class="jxr_string">"Must provide a method!"</span>);
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>  
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Web endpoint [{0}] for method [{1}]"</span>, (<strong class="jxr_keyword">null</strong> != method.getAnnotation(WebEndpoint.<strong class="jxr_keyword">class</strong>)), method);
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Web endpoint [{0}] for method [{1}]"</span>, <strong class="jxr_keyword">null</strong> != method.getAnnotation(WebEndpoint.<strong class="jxr_keyword">class</strong>), method);
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>      }
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>      <em class="jxr_javadoccomment">/**</em>

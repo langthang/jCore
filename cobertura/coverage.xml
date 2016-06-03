@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.7527173913043478" branch-rate="0.8875" lines-covered="277" lines-valid="368" branches-covered="71" branches-valid="80" complexity="1.4076086956521738" version="2.1.1" timestamp="1464952624471">
+<coverage line-rate="0.7796143250688705" branch-rate="0.8875" lines-covered="283" lines-valid="363" branches-covered="71" branches-valid="80" complexity="1.4143646408839778" version="2.1.1" timestamp="1464975053311">
 	<sources>
 		<source>/var/lib/openshift/540b2c664382ec0a4f000622/app-root/data/workspace/FlossWare-jCore/target/generated-sources/annotations</source>
 		<source>--source</source>
@@ -14,30 +14,30 @@
 					<methods>
 						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="38" hits="57" branch="false"/>
-								<line number="39" hits="57" branch="false"/>
-								<line number="40" hits="57" branch="false"/>
+								<line number="38" hits="69" branch="false"/>
+								<line number="39" hits="69" branch="false"/>
+								<line number="40" hits="69" branch="false"/>
 							</lines>
 						</method>
 						<method name="getLogger" signature="()Ljava/util/logging/Logger;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="48" hits="308" branch="false"/>
+								<line number="48" hits="381" branch="false"/>
 							</lines>
 						</method>
 						<method name="log" signature="(Ljava/util/logging/Level;Ljava/lang/String;[Ljava/lang/Object;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="59" hits="92" branch="false"/>
-								<line number="60" hits="92" branch="false"/>
+								<line number="59" hits="116" branch="false"/>
+								<line number="60" hits="116" branch="false"/>
 							</lines>
 						</method>
 						<method name="logAndReturn" signature="(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="74" hits="65" branch="false"/>
+								<line number="74" hits="74" branch="false"/>
 							</lines>
 						</method>
 						<method name="logAndReturn" signature="(Ljava/util/logging/Level;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="106" hits="139" branch="false"/>
+								<line number="106" hits="179" branch="false"/>
 							</lines>
 						</method>
 						<method name="logAndReturnByIndex" signature="(Ljava/util/logging/Level;Ljava/lang/String;I[Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
@@ -47,15 +47,15 @@
 						</method>
 					</methods>
 					<lines>
-						<line number="38" hits="57" branch="false"/>
-						<line number="39" hits="57" branch="false"/>
-						<line number="40" hits="57" branch="false"/>
-						<line number="48" hits="308" branch="false"/>
-						<line number="59" hits="92" branch="false"/>
-						<line number="60" hits="92" branch="false"/>
-						<line number="74" hits="65" branch="false"/>
+						<line number="38" hits="69" branch="false"/>
+						<line number="39" hits="69" branch="false"/>
+						<line number="40" hits="69" branch="false"/>
+						<line number="48" hits="381" branch="false"/>
+						<line number="59" hits="116" branch="false"/>
+						<line number="60" hits="116" branch="false"/>
+						<line number="74" hits="74" branch="false"/>
 						<line number="91" hits="8" branch="false"/>
-						<line number="106" hits="139" branch="false"/>
+						<line number="106" hits="179" branch="false"/>
 					</lines>
 				</class>
 				<class name="org.flossware.jcore.AbstractStringifiable" filename="org/flossware/jcore/AbstractStringifiable.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
@@ -384,63 +384,63 @@
 				</class>
 			</classes>
 		</package>
-		<package name="org.flossware.jcore.collections.map" line-rate="0.7096774193548387" branch-rate="1.0" complexity="1.0">
+		<package name="org.flossware.jcore.collections.map" line-rate="1.0" branch-rate="1.0" complexity="1.0">
 			<classes>
-				<class name="org.flossware.jcore.collections.map.AbstractFunctionalMap" filename="org/flossware/jcore/collections/map/AbstractFunctionalMap.java" line-rate="0.6666666666666666" branch-rate="1.0" complexity="1.0">
+				<class name="org.flossware.jcore.collections.map.AbstractFunctionalMap" filename="org/flossware/jcore/collections/map/AbstractFunctionalMap.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
 					<methods>
 						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="38" hits="6" branch="false"/>
-								<line number="39" hits="6" branch="false"/>
+								<line number="38" hits="18" branch="false"/>
+								<line number="39" hits="18" branch="false"/>
 							</lines>
 						</method>
-						<method name="clear" signature="()V" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="clear" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="152" hits="0" branch="false"/>
-								<line number="154" hits="0" branch="false"/>
-								<line number="155" hits="0" branch="false"/>
+								<line number="152" hits="1" branch="false"/>
+								<line number="154" hits="1" branch="false"/>
+								<line number="155" hits="1" branch="false"/>
 							</lines>
 						</method>
-						<method name="containsKey" signature="(Ljava/lang/Object;)Z" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="containsKey" signature="(Ljava/lang/Object;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="102" hits="0" branch="false"/>
+								<line number="102" hits="5" branch="false"/>
 							</lines>
 						</method>
-						<method name="containsValue" signature="(Ljava/lang/Object;)Z" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="containsValue" signature="(Ljava/lang/Object;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="110" hits="0" branch="false"/>
+								<line number="110" hits="3" branch="false"/>
 							</lines>
 						</method>
-						<method name="entrySet" signature="()Ljava/util/Set;" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="entrySet" signature="()Ljava/util/Set;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="178" hits="0" branch="false"/>
+								<line number="178" hits="1" branch="false"/>
 							</lines>
 						</method>
-						<method name="get" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="get" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="118" hits="0" branch="false"/>
+								<line number="118" hits="3" branch="false"/>
 							</lines>
 						</method>
 						<method name="isEmpty" signature="()Z" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="94" hits="6" branch="false"/>
+								<line number="94" hits="10" branch="false"/>
 							</lines>
 						</method>
-						<method name="keySet" signature="()Ljava/util/Set;" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="keySet" signature="()Ljava/util/Set;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="162" hits="0" branch="false"/>
+								<line number="162" hits="1" branch="false"/>
 							</lines>
 						</method>
 						<method name="put" signature="(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="126" hits="12" branch="false"/>
+								<line number="126" hits="38" branch="false"/>
 							</lines>
 						</method>
 						<method name="putAll" signature="(Ljava/util/Map;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="142" hits="4" branch="false"/>
-								<line number="144" hits="4" branch="false"/>
-								<line number="145" hits="4" branch="false"/>
+								<line number="142" hits="5" branch="false"/>
+								<line number="144" hits="5" branch="false"/>
+								<line number="145" hits="5" branch="false"/>
 							</lines>
 						</method>
 						<method name="putAllF" signature="(Ljava/util/Map;)Lorg/flossware/jcore/collections/map/FunctionalMap;" line-rate="1.0" branch-rate="1.0" complexity="0">
@@ -452,14 +452,14 @@
 						</method>
 						<method name="putF" signature="(Ljava/lang/Object;Ljava/lang/Object;)Lorg/flossware/jcore/collections/map/FunctionalMap;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="52" hits="12" branch="false"/>
-								<line number="54" hits="12" branch="false"/>
-								<line number="56" hits="12" branch="false"/>
+								<line number="52" hits="34" branch="false"/>
+								<line number="54" hits="34" branch="false"/>
+								<line number="56" hits="34" branch="false"/>
 							</lines>
 						</method>
 						<method name="remove" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="134" hits="22" branch="false"/>
+								<line number="134" hits="25" branch="false"/>
 							</lines>
 						</method>
 						<method name="removeF" signature="(Ljava/lang/Object;)Lorg/flossware/jcore/collections/map/FunctionalMap;" line-rate="1.0" branch-rate="1.0" complexity="0">
@@ -471,43 +471,43 @@
 						</method>
 						<method name="size" signature="()I" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="86" hits="4" branch="false"/>
+								<line number="86" hits="6" branch="false"/>
 							</lines>
 						</method>
-						<method name="values" signature="()Ljava/util/Collection;" line-rate="0.0" branch-rate="1.0" complexity="0">
+						<method name="values" signature="()Ljava/util/Collection;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="170" hits="0" branch="false"/>
+								<line number="170" hits="1" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="38" hits="6" branch="false"/>
-						<line number="39" hits="6" branch="false"/>
-						<line number="52" hits="12" branch="false"/>
-						<line number="54" hits="12" branch="false"/>
-						<line number="56" hits="12" branch="false"/>
+						<line number="38" hits="18" branch="false"/>
+						<line number="39" hits="18" branch="false"/>
+						<line number="52" hits="34" branch="false"/>
+						<line number="54" hits="34" branch="false"/>
+						<line number="56" hits="34" branch="false"/>
 						<line number="63" hits="4" branch="false"/>
 						<line number="65" hits="4" branch="false"/>
 						<line number="67" hits="4" branch="false"/>
 						<line number="74" hits="8" branch="false"/>
 						<line number="76" hits="8" branch="false"/>
 						<line number="78" hits="8" branch="false"/>
-						<line number="86" hits="4" branch="false"/>
-						<line number="94" hits="6" branch="false"/>
-						<line number="102" hits="0" branch="false"/>
-						<line number="110" hits="0" branch="false"/>
-						<line number="118" hits="0" branch="false"/>
-						<line number="126" hits="12" branch="false"/>
-						<line number="134" hits="22" branch="false"/>
-						<line number="142" hits="4" branch="false"/>
-						<line number="144" hits="4" branch="false"/>
-						<line number="145" hits="4" branch="false"/>
-						<line number="152" hits="0" branch="false"/>
-						<line number="154" hits="0" branch="false"/>
-						<line number="155" hits="0" branch="false"/>
-						<line number="162" hits="0" branch="false"/>
-						<line number="170" hits="0" branch="false"/>
-						<line number="178" hits="0" branch="false"/>
+						<line number="86" hits="6" branch="false"/>
+						<line number="94" hits="10" branch="false"/>
+						<line number="102" hits="5" branch="false"/>
+						<line number="110" hits="3" branch="false"/>
+						<line number="118" hits="3" branch="false"/>
+						<line number="126" hits="38" branch="false"/>
+						<line number="134" hits="25" branch="false"/>
+						<line number="142" hits="5" branch="false"/>
+						<line number="144" hits="5" branch="false"/>
+						<line number="145" hits="5" branch="false"/>
+						<line number="152" hits="1" branch="false"/>
+						<line number="154" hits="1" branch="false"/>
+						<line number="155" hits="1" branch="false"/>
+						<line number="162" hits="1" branch="false"/>
+						<line number="170" hits="1" branch="false"/>
+						<line number="178" hits="1" branch="false"/>
 					</lines>
 				</class>
 				<class name="org.flossware.jcore.collections.map.DefaultFunctionalMap" filename="org/flossware/jcore/collections/map/DefaultFunctionalMap.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
@@ -790,44 +790,32 @@
 				</class>
 			</classes>
 		</package>
-		<package name="org.flossware.jcore.utils" line-rate="0.8170731707317073" branch-rate="0.975" complexity="1.6666666666666667">
+		<package name="org.flossware.jcore.utils" line-rate="0.825" branch-rate="0.975" complexity="1.6842105263157894">
 			<classes>
 				<class name="org.flossware.jcore.utils.ClassUtils" filename="org/flossware/jcore/utils/ClassUtils.java" line-rate="0.5" branch-rate="1.0" complexity="1.0">
 					<methods>
-						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
-							<lines>
-								<line number="31" hits="1" branch="false"/>
-							</lines>
-						</method>
 						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="66" hits="0" branch="false"/>
-								<line number="67" hits="0" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+								<line number="53" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="getClass" signature="(Ljava/lang/Object;)Ljava/lang/Class;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="60" hits="2" branch="false"/>
-							</lines>
-						</method>
-						<method name="getLogger" signature="()Ljava/util/logging/Logger;" line-rate="0.0" branch-rate="1.0" complexity="0">
-							<lines>
-								<line number="37" hits="0" branch="false"/>
+								<line number="46" hits="2" branch="false"/>
 							</lines>
 						</method>
 						<method name="getPackageName" signature="(Ljava/lang/Class;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="48" hits="3" branch="false"/>
+								<line number="34" hits="3" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="31" hits="1" branch="false"/>
-						<line number="37" hits="0" branch="false"/>
-						<line number="48" hits="3" branch="false"/>
-						<line number="60" hits="2" branch="false"/>
-						<line number="66" hits="0" branch="false"/>
-						<line number="67" hits="0" branch="false"/>
+						<line number="34" hits="3" branch="false"/>
+						<line number="46" hits="2" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
 					</lines>
 				</class>
 				<class name="org.flossware.jcore.utils.ExceptionUtils" filename="org/flossware/jcore/utils/ExceptionUtils.java" line-rate="0.8571428571428571" branch-rate="1.0" complexity="2.0">
@@ -986,36 +974,36 @@
 						</method>
 						<method name="log" signature="(Ljava/util/logging/Logger;Ljava/util/logging/Level;Ljava/lang/String;[Ljava/lang/Object;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="82" hits="417" branch="false"/>
-								<line number="83" hits="417" branch="false"/>
+								<line number="82" hits="481" branch="false"/>
+								<line number="83" hits="481" branch="false"/>
 							</lines>
 						</method>
 						<method name="logAndReturn" signature="(Ljava/util/logging/Logger;Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="98" hits="86" branch="false"/>
-								<line number="100" hits="86" branch="false"/>
+								<line number="98" hits="95" branch="false"/>
+								<line number="100" hits="95" branch="false"/>
 							</lines>
 						</method>
 						<method name="logAndReturn" signature="(Ljava/util/logging/Logger;Ljava/util/logging/Level;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="135" hits="289" branch="false"/>
+								<line number="135" hits="329" branch="false"/>
 							</lines>
 						</method>
 						<method name="logAndReturnByIndex" signature="(Ljava/util/logging/Logger;Ljava/util/logging/Level;Ljava/lang/String;I[Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="117" hits="298" branch="false"/>
-								<line number="119" hits="298" branch="false"/>
+								<line number="117" hits="338" branch="false"/>
+								<line number="119" hits="338" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="82" hits="417" branch="false"/>
-						<line number="83" hits="417" branch="false"/>
-						<line number="98" hits="86" branch="false"/>
-						<line number="100" hits="86" branch="false"/>
-						<line number="117" hits="298" branch="false"/>
-						<line number="119" hits="298" branch="false"/>
-						<line number="135" hits="289" branch="false"/>
+						<line number="82" hits="481" branch="false"/>
+						<line number="83" hits="481" branch="false"/>
+						<line number="98" hits="95" branch="false"/>
+						<line number="100" hits="95" branch="false"/>
+						<line number="117" hits="338" branch="false"/>
+						<line number="119" hits="338" branch="false"/>
+						<line number="135" hits="329" branch="false"/>
 						<line number="141" hits="0" branch="false"/>
 						<line number="142" hits="0" branch="false"/>
 					</lines>
@@ -1312,82 +1300,70 @@
 				</class>
 			</classes>
 		</package>
-		<package name="org.flossware.jcore.utils.collections" line-rate="0.8666666666666667" branch-rate="0.8888888888888888" complexity="1.5833333333333333">
+		<package name="org.flossware.jcore.utils.collections" line-rate="0.8767123287671232" branch-rate="0.8888888888888888" complexity="1.608695652173913">
 			<classes>
-				<class name="org.flossware.jcore.utils.collections.ArrayUtils" filename="org/flossware/jcore/utils/collections/ArrayUtils.java" line-rate="0.7692307692307693" branch-rate="1.0" complexity="1.5">
+				<class name="org.flossware.jcore.utils.collections.ArrayUtils" filename="org/flossware/jcore/utils/collections/ArrayUtils.java" line-rate="0.8181818181818182" branch-rate="1.0" complexity="1.6">
 					<methods>
-						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
-							<lines>
-								<line number="32" hits="1" branch="false"/>
-							</lines>
-						</method>
 						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="139" hits="0" branch="false"/>
-								<line number="140" hits="0" branch="false"/>
+								<line number="124" hits="0" branch="false"/>
+								<line number="125" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="ensureArray" signature="([Ljava/lang/Object;)[Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="113" hits="5" branch="false"/>
+								<line number="98" hits="5" branch="false"/>
 							</lines>
 						</method>
 						<method name="ensureArray" signature="([Ljava/lang/Object;I)[Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="86" hits="7" branch="false"/>
+								<line number="71" hits="7" branch="false"/>
 							</lines>
 						</method>
 						<method name="ensureArray" signature="([Ljava/lang/Object;ILjava/lang/String;)[Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="61" hits="61" branch="false"/>
-								<line number="63" hits="55" branch="true" condition-coverage="100% (2/2)">
+								<line number="46" hits="61" branch="false"/>
+								<line number="48" hits="55" branch="true" condition-coverage="100% (2/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="100%"/>
 									</conditions>
 								</line>
-								<line number="64" hits="7" branch="false"/>
-								<line number="67" hits="132" branch="true" condition-coverage="100% (2/2)">
+								<line number="49" hits="7" branch="false"/>
+								<line number="52" hits="132" branch="true" condition-coverage="100% (2/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="100%"/>
 									</conditions>
 								</line>
-								<line number="68" hits="88" branch="false"/>
-								<line number="71" hits="44" branch="false"/>
+								<line number="53" hits="88" branch="false"/>
+								<line number="56" hits="44" branch="false"/>
 							</lines>
 						</method>
 						<method name="ensureArray" signature="([Ljava/lang/Object;Ljava/lang/String;)[Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="100" hits="35" branch="false"/>
-							</lines>
-						</method>
-						<method name="getLogger" signature="()Ljava/util/logging/Logger;" line-rate="0.0" branch-rate="1.0" complexity="0">
-							<lines>
-								<line number="40" hits="0" branch="false"/>
+								<line number="85" hits="35" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="32" hits="1" branch="false"/>
-						<line number="40" hits="0" branch="false"/>
-						<line number="61" hits="61" branch="false"/>
-						<line number="63" hits="55" branch="true" condition-coverage="100% (2/2)">
+						<line number="46" hits="61" branch="false"/>
+						<line number="48" hits="55" branch="true" condition-coverage="100% (2/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="100%"/>
 							</conditions>
 						</line>
-						<line number="64" hits="7" branch="false"/>
-						<line number="67" hits="132" branch="true" condition-coverage="100% (2/2)">
+						<line number="49" hits="7" branch="false"/>
+						<line number="52" hits="132" branch="true" condition-coverage="100% (2/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="100%"/>
 							</conditions>
 						</line>
-						<line number="68" hits="88" branch="false"/>
-						<line number="71" hits="44" branch="false"/>
-						<line number="86" hits="7" branch="false"/>
-						<line number="100" hits="35" branch="false"/>
-						<line number="113" hits="5" branch="false"/>
-						<line number="139" hits="0" branch="false"/>
-						<line number="140" hits="0" branch="false"/>
+						<line number="53" hits="88" branch="false"/>
+						<line number="56" hits="44" branch="false"/>
+						<line number="71" hits="7" branch="false"/>
+						<line number="85" hits="35" branch="false"/>
+						<line number="98" hits="5" branch="false"/>
+						<line number="124" hits="0" branch="false"/>
+						<line number="125" hits="0" branch="false"/>
 					</lines>
 				</class>
 				<class name="org.flossware.jcore.utils.collections.CollectionUtils" filename="org/flossware/jcore/utils/collections/CollectionUtils.java" line-rate="0.975609756097561" branch-rate="1.0" complexity="1.6">
@@ -1674,51 +1650,39 @@
 				</class>
 			</classes>
 		</package>
-		<package name="org.flossware.jcore.utils.io" line-rate="0.52" branch-rate="0.5" complexity="2.125">
+		<package name="org.flossware.jcore.utils.io" line-rate="0.5" branch-rate="0.5" complexity="2.2857142857142856">
 			<classes>
-				<class name="org.flossware.jcore.utils.io.FileUtils" filename="org/flossware/jcore/utils/io/FileUtils.java" line-rate="0.625" branch-rate="1.0" complexity="1.75">
+				<class name="org.flossware.jcore.utils.io.FileUtils" filename="org/flossware/jcore/utils/io/FileUtils.java" line-rate="0.6666666666666666" branch-rate="1.0" complexity="2.0">
 					<methods>
-						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
-							<lines>
-								<line number="37" hits="1" branch="false"/>
-							</lines>
-						</method>
 						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="84" hits="0" branch="false"/>
-								<line number="85" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="false"/>
+								<line number="69" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="getFileInputStream" signature="(Ljava/io/File;)Ljava/io/FileInputStream;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="59" hits="5" branch="false"/>
-								<line number="60" hits="2" branch="false"/>
-								<line number="61" hits="2" branch="false"/>
+								<line number="45" hits="5" branch="false"/>
+								<line number="46" hits="2" branch="false"/>
+								<line number="47" hits="2" branch="false"/>
 							</lines>
 						</method>
 						<method name="getFileInputStream" signature="(Ljava/lang/String;)Ljava/io/FileInputStream;" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
-								<line number="78" hits="3" branch="false"/>
-							</lines>
-						</method>
-						<method name="getLogger" signature="()Ljava/util/logging/Logger;" line-rate="0.0" branch-rate="1.0" complexity="0">
-							<lines>
-								<line number="43" hits="0" branch="false"/>
+								<line number="62" hits="3" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="37" hits="1" branch="false"/>
-						<line number="43" hits="0" branch="false"/>
-						<line number="59" hits="5" branch="false"/>
-						<line number="60" hits="2" branch="false"/>
-						<line number="61" hits="2" branch="false"/>
-						<line number="78" hits="3" branch="false"/>
-						<line number="84" hits="0" branch="false"/>
-						<line number="85" hits="0" branch="false"/>
+						<line number="45" hits="5" branch="false"/>
+						<line number="46" hits="2" branch="false"/>
+						<line number="47" hits="2" branch="false"/>
+						<line number="62" hits="3" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="69" hits="0" branch="false"/>
 					</lines>
 				</class>
-				<class name="org.flossware.jcore.utils.io.IOUtils" filename="org/flossware/jcore/utils/io/IOUtils.java" line-rate="0.47058823529411764" branch-rate="0.5" complexity="2.5">
+				<class name="org.flossware.jcore.utils.io.IOUtils" filename="org/flossware/jcore/utils/io/IOUtils.java" line-rate="0.4444444444444444" branch-rate="0.5" complexity="2.5">
 					<methods>
 						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
 							<lines>
@@ -1758,6 +1722,7 @@
 								<line number="80" hits="0" branch="false"/>
 								<line number="81" hits="0" branch="false"/>
 								<line number="82" hits="0" branch="false"/>
+								<line number="83" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="getLogger" signature="()Ljava/util/logging/Logger;" line-rate="1.0" branch-rate="1.0" complexity="0">
@@ -1792,6 +1757,7 @@
 						<line number="80" hits="0" branch="false"/>
 						<line number="81" hits="0" branch="false"/>
 						<line number="82" hits="0" branch="false"/>
+						<line number="83" hits="0" branch="false"/>
 					</lines>
 				</class>
 			</classes>

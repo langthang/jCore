@@ -60,7 +60,7 @@
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * @return true if &lt;code&gt;str&lt;/code&gt; is null or empty.</em>
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> isBlank(<strong class="jxr_keyword">final</strong> String str) {
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Is string blank [{0}] for string [{1}]"</span>, (<strong class="jxr_keyword">null</strong> == str || <span class="jxr_string">""</span>.equals(str.trim())), str);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Is string blank [{0}] for string [{1}]"</span>, <strong class="jxr_keyword">null</strong> == str || <span class="jxr_string">""</span>.equals(str.trim()), str);
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      }
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>  
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      <em class="jxr_javadoccomment">/**</em>
@@ -104,7 +104,7 @@
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>  <em class="jxr_javadoccomment">     * @return true if we can append a separator or false if not.</em>
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> isSeparatorAppendable(<strong class="jxr_keyword">final</strong> String separator, <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> index, <strong class="jxr_keyword">final</strong> Object... objs) {
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Is the separator appendable [{0}] for index [{1}]"</span>, (<strong class="jxr_keyword">null</strong> != objs &amp;&amp; index &lt;= (objs.length - 2) &amp;&amp; !objs[index].toString().endsWith(separator)), index);
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>          <strong class="jxr_keyword">return</strong> LoggerUtils.logAndReturn(getLogger(), Level.FINEST, <span class="jxr_string">"Is the separator appendable [{0}] for index [{1}]"</span>, <strong class="jxr_keyword">null</strong> != objs &amp;&amp; index &lt;= (objs.length - 2) &amp;&amp; !objs[index].toString().endsWith(separator), index);
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>     }
 <a class="jxr_linenumber" name="L101" href="#L101">101</a> 
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>     <em class="jxr_javadoccomment">/**</em>
