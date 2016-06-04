@@ -27,7 +27,6 @@ public class FileException extends RuntimeException {
      * Default constructor.
      */
     public FileException() {
-
     }
 
     /**
@@ -52,7 +51,7 @@ public class FileException extends RuntimeException {
      * Sets the cause of why self is raised and a message about it.
      *
      * @param message detail message.
-     * @param cause   the cause of why self is being raised.
+     * @param cause the cause of why self is being raised.
      */
     public FileException(final String message, final Throwable cause) {
         super(message, cause);

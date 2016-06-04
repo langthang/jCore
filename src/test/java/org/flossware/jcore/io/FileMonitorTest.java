@@ -20,6 +20,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import org.flossware.jcore.utils.StringUtils;
+import org.flossware.jcore.utils.TestUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -41,8 +43,10 @@ public class FileMonitorTest {
      */
     @Before
     public void testSetup() throws IOException {
-        tempFile = File.createTempFile("P" + System.currentTimeMillis() + "_", "_S" + System.currentTimeMillis());
+        tempFile = File.createTempFile("P" + System.currentTimeMillis() + "_", null);
+
         tempFile.deleteOnExit();
+        tempFile.delete();
     }
 
     /**
@@ -51,6 +55,18 @@ public class FileMonitorTest {
     @After
     public void testCleanup() {
         tempFile.delete();
+    }
+
+    /**
+     * Test the last modified observed date.
+     */
+    @Test
+    public void test_getLastModifiedObserved() {
+        final FileMonitor fileMonitor = new FileMonitor(tempFile);
+
+        Assert.assertNotNull("Should have a last modified observed", fileMonitor.getLastModifiedObserved());
+
+        Assert.assertEquals("Should be the same modified observed", tempFile.lastModified(), fileMonitor.getLastModifiedObserved().longValue());
     }
 
     /**
@@ -86,6 +102,17 @@ public class FileMonitorTest {
     }
 
     /**
+     * Test with a real file name.
+     */
+    @Test
+    public void test_contructor() {
+        final FileMonitor fileMonitor = new FileMonitor(tempFile.getPath());
+
+        Assert.assertNotNull("Should have file", fileMonitor.getFile());
+        Assert.assertEquals("Should not have a last modified date", 0, fileMonitor.getLastModifiedObserved().longValue());
+    }
+
+    /**
      * Test retrieving the file.
      */
     @Test
@@ -103,21 +130,58 @@ public class FileMonitorTest {
         tempFileNotExist.delete();
 
         Assert.assertFalse("File should not exist", new FileMonitor(tempFileNotExist).exists());
-        Assert.assertTrue("File should exist", new FileMonitor(tempFile).exists());
+    }
+
+    /**
+     * Test a non existent file from changing.
+     */
+    @Test
+    public void test_isChanged_NoFile() {
+        final FileMonitor fileMonitor = new FileMonitor(tempFile);
+        tempFile.delete();
+
+        Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
+    }
+
+    /**
+     * Test a file created but not changed.
+     */
+    @Test
+    public void test_isChanged_NoChange() {
+        final FileMonitor fileMonitor = new FileMonitor(tempFile);
+
+        Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
     }
 
     /**
      * Test a file changing.
      */
+    @Test
     public void test_isChanged() throws FileNotFoundException, IOException {
         final FileMonitor fileMonitor = new FileMonitor(tempFile);
 
         Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
 
-        final FileOutputStream fos = new FileOutputStream(fileMonitor.getFile());
-        fos.write(0);
+        final FileOutputStream fos = new FileOutputStream(tempFile);
+        final byte[] bytes = new byte[1024];
+        fos.write(bytes);
+        fos.close();
 
         Assert.assertTrue("File should have changed", fileMonitor.isChanged());
         Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
+    }
+
+    /**
+     * Test using a string builder and a prefix.
+     */
+    @Test
+    public void test_toStringBuilder() {
+        final FileMonitor fileMonitor = new FileMonitor(tempFile);
+        final String prefix = TestUtils.generateUniqueStr("Foo", "Bar");
+
+        final StringBuilder stringBuilder = fileMonitor.toStringBuilder(new StringBuilder(), prefix);
+
+        Assert.assertFalse("Should have a string representation", StringUtils.isBlank(stringBuilder.toString()));
+        Assert.assertTrue("String representation should start with correct prefix", stringBuilder.toString().startsWith(prefix));
     }
 }

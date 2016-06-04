@@ -17,7 +17,6 @@
 package org.flossware.jcore.io;
 
 import java.io.File;
-import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import org.flossware.jcore.AbstractStringifiable;
@@ -49,7 +48,7 @@ public class FileMonitor extends AbstractStringifiable {
      *
      * @return the timestamp of the file last time it was monitored.
      */
-    private AtomicLong getLastModifiedObserved() {
+    AtomicLong getLastModifiedObserved() {
         return lastModifiedObserved;
     }
 
@@ -60,7 +59,7 @@ public class FileMonitor extends AbstractStringifiable {
      */
     public FileMonitor(final File file) {
         this.file = ObjectUtils.ensureObject(file, "Must have a file to monitor");
-        this.lastModifiedObserved = new AtomicLong();
+        this.lastModifiedObserved = new AtomicLong(file.lastModified());
     }
 
     /**
@@ -102,11 +101,13 @@ public class FileMonitor extends AbstractStringifiable {
             return false;
         }
 
-        log(Level.FINEST, "File, {0} lastModified on {1} -> {2}", getFile(), new Date(getFile().lastModified()), new Date(getLastModifiedObserved().get()));
+        log(Level.FINEST, "File, {0} lastModified on {1} -> {2}", getFile(), getFile().lastModified(), getLastModifiedObserved().get());
 
         if (getFile().lastModified() == getLastModifiedObserved().get()) {
             return false;
         }
+
+        log(Level.FINEST, "Setting last observed modified for file, {0} lastModified {1}}", getFile(), getFile().lastModified());
 
         getLastModifiedObserved().set(getFile().lastModified());
 
