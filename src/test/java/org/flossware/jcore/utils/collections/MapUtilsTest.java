@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils.collections;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +32,16 @@ import org.junit.Test;
  * @author Scot P. Floess
  */
 public class MapUtilsTest {
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = MapUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Test a map for a minimum size, a failure message and the map is null.

@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils.collections;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
@@ -53,6 +55,16 @@ public class IterableUtilsTest {
     }
 
     /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = IterableUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
+
+    /**
      * Tests contains using null.
      */
     @Test
@@ -76,13 +88,16 @@ public class IterableUtilsTest {
     @Test
     public void test_contains() {
         final List list = new ArrayList<>();
-        list.add("3hello3");
+
         list.add("222222");
         list.add("hello1");
+        list.add("3hello3");
 
         Assert.assertTrue("Should contain values", IterableUtils.contains(list, new ContainsFilter(), "3"));
         Assert.assertTrue("Should contain values", IterableUtils.contains(list, new ContainsFilter(), "hello"));
 
         Assert.assertTrue("Should not contain values", IterableUtils.contains(list, new NotContainsFilter(), "BLAH"));
+
+        Assert.assertFalse("Should not contain values", IterableUtils.contains(new ArrayList<String>(), new NotContainsFilter(), "BLAH"));
     }
 }

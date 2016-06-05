@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils.collections;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import org.flossware.jcore.utils.ObjectUtils;
 import org.flossware.jcore.utils.TestUtils;
 import org.junit.Assert;
@@ -27,6 +29,16 @@ import org.junit.Test;
  * @author Scot P. Floess
  */
 public class ArrayUtilsTest {
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = ArrayUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Test an array for a minimum size, a failure message and the array is null.

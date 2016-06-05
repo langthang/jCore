@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils.collections;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -59,6 +61,16 @@ public class CollectionUtilsTest {
             return toFilter.contains(value);
         }
 
+    }
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = CollectionUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
     }
 
     /**

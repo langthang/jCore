@@ -273,4 +273,10 @@ public class CollectionUtils {
 
         return retVal;
     }
+
+    /**
+     * Default constructor not allowed.
+     */
+    private CollectionUtils() {
+    }
 }
