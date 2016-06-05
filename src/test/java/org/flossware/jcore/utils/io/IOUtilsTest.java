@@ -18,6 +18,8 @@ package org.flossware.jcore.utils.io;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -36,10 +38,20 @@ public class IOUtilsTest {
     Closeable closeable;
 
     /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = IOUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
+
+    /**
      * Tests closing with a null.
      */
     @Test
-    public void test_close_file_null() {
+    public void test_close_null() {
         IOUtils.close(null);
     }
 
@@ -58,11 +70,21 @@ public class IOUtilsTest {
     }
 
     /**
+     * Test successful closes.
+     */
+    @Test
+    public void test_close() throws IOException {
+        IOUtils.close(closeable);
+
+        Mockito.verify(closeable).close();
+    }
+
+    /**
      * Tests closing with a null.
      */
     @Test
-    public void test_closeQuietly_file_null() {
-        IOUtils.close(null);
+    public void test_closeQuietly_null() {
+        IOUtils.closeQuietly(null);
     }
 
     /**
@@ -74,7 +96,17 @@ public class IOUtilsTest {
     public void test_closeQuietly_IOException() throws IOException {
         Mockito.doThrow(new IOException()).when(closeable).close();
 
-        IOUtils.close(closeable);
+        IOUtils.closeQuietly(closeable);
+
+        Mockito.verify(closeable).close();
+    }
+
+    /**
+     * Test successful closes.
+     */
+    @Test
+    public void test_closeQuietly() throws IOException {
+        IOUtils.closeQuietly(closeable);
 
         Mockito.verify(closeable).close();
     }

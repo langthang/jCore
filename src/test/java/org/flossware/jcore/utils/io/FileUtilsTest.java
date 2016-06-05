@@ -18,6 +18,8 @@ package org.flossware.jcore.utils.io;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import org.flossware.jcore.io.FileException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -28,6 +30,16 @@ import org.junit.Test;
  * @author Scot P. Floess
  */
 public class FileUtilsTest {
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = FileUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Tests getting a file input stream for a null file.
