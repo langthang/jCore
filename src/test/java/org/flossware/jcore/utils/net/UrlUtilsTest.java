@@ -17,6 +17,8 @@
 package org.flossware.jcore.utils.net;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import org.flossware.jcore.io.UrlException;
 import org.junit.Assert;
@@ -28,6 +30,16 @@ import org.junit.Test;
  * @author Scot P. Floess
  */
 public class UrlUtilsTest {
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = UrlUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Tests creating a URL with a null.

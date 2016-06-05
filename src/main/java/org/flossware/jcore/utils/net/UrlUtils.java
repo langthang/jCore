@@ -94,10 +94,12 @@ public class UrlUtils {
      * @return a URL representation of only protocol and host.
      */
     public static URL computeHostUrl(final String rawUrl) {
-        try {
-            return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Host URL [{0}] for raw string [{1}]", new URL(computeHostUrlAsString(rawUrl)), rawUrl);
-        } catch (final MalformedURLException malformedUrlException) {
-            throw new UrlException(malformedUrlException);
-        }
+        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Host URL [{0}] for raw string [{1}]", createUrl(computeHostUrlAsString(rawUrl)), rawUrl);
+    }
+
+    /**
+     * Default constructor not allowed.
+     */
+    private UrlUtils() {
     }
 }
