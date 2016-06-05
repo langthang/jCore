@@ -84,7 +84,9 @@ public class SoapUtils {
         return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Soap header is [{0}] for SOAPMessageContext [{1}]", msgContext.getMessage().getSOAPPart().getEnvelope().addHeader(), msgContext);
     }
 
+    /**
+     * Default constructor not allowed.
+     */
     private SoapUtils() {
     }
-
 }

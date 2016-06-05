@@ -21,9 +21,9 @@ package javax.xml.ws;
  *
  * @author flossware
  */
-public class Service {
+public class TestService {
 
-    public Service() {
+    public TestService() {
 
     }
 }

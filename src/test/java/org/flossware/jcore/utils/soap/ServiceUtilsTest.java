@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils.soap;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
@@ -39,7 +41,7 @@ public class ServiceUtilsTest {
      * Simple stub class for examining web endpoint methods.
      */
     @WebServiceClient(targetNamespace = "Target_Namespace", name = "Name")
-    class StubService extends Service {
+    static class StubService extends Service {
 
         @WebEndpoint(name = "Web_Endpoint_Method")
         public Integer webEndpointMethod() {
@@ -48,18 +50,36 @@ public class ServiceUtilsTest {
 
         public void nonWebEndpointMethod() {
         }
+
+        public StubService(final URL url) {
+            super(url, new QName("urn:enterprise.soap.sforce.com", "SforceService"));
+        }
     }
 
     /**
      * Simple stub class for examining web endpoint methods.
      */
-    class NoAnnotationsStubService extends Service {
+    static class NoAnnotationsStubService extends Service {
 
         public void webEndpointMethod() {
         }
 
         public void nonWebEndpointMethod() {
         }
+
+        public NoAnnotationsStubService() {
+            super(ServiceUtilsTest.class.getResource("/TestService.wsdl"), new QName("urn:enterprise.soap.sforce.com", "SforceService"));
+        }
+    }
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = ServiceUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
     }
 
     /**
@@ -171,15 +191,47 @@ public class ServiceUtilsTest {
      * Test trying to create a service with a null URL.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void test_createService_URL() throws MalformedURLException {
+    public void test_createService_URL_null() throws MalformedURLException {
         ServiceUtils.createService(null, new URL("http://foo"));
+    }
+
+    /**
+     * Test trying to create a service with a null URL.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void test_createService_URL_NoSuchMethodException() throws MalformedURLException {
+        ServiceUtils.createService(NoAnnotationsStubService.class, new URL("http://foo"));
+    }
+
+    /**
+     * Test trying to create a service with a null URL.
+     */
+    @Test
+    public void test_createService_URL() throws MalformedURLException {
+        ServiceUtils.createService(StubService.class, ServiceUtilsTest.class.getResource("/TestService.wsdl"));
     }
 
     /**
      * Test trying to create a service with a null service.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void test_createService_String() {
+    public void test_createService_String_nullService() {
         ServiceUtils.createService(null, "foo");
+    }
+
+    /**
+     * Test trying to create a service.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void test_createService_String_MaleformedUrl() {
+        ServiceUtils.createService(StubService.class, "htp://foo.bar/TestService.wsdl");
+    }
+
+    /**
+     * Test trying to create a service.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void test_createService_String() {
+        ServiceUtils.createService(StubService.class, "/TestService.wsdl");
     }
 }
