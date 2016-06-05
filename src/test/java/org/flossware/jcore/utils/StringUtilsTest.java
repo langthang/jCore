@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,6 +27,16 @@ import org.junit.Test;
  * @author Scot P. Floess
  */
 public class StringUtilsTest {
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = StringUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Test a blank string.
@@ -110,7 +122,7 @@ public class StringUtilsTest {
      */
     @Test
     public void test_isSeparatorAppendable() {
-        Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 0, (Object) null));
+        Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 0, (Object[]) null));
         Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 0, "hello"));
         Assert.assertFalse("Should not be need appendable separator", StringUtils.isSeparatorAppendable("/", 1, "hello"));
         Assert.assertTrue("Should need appendable separator", StringUtils.isSeparatorAppendable("/", 0, "hello", "Goodbye"));

@@ -54,4 +54,10 @@ public class TestUtils {
     public static final String generateUniqueStr() {
         return generateUniqueStr("");
     }
+
+    /**
+     * Default constructor not allowed.
+     */
+    private TestUtils() {
+    }
 }

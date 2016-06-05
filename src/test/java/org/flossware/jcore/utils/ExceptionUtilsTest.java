@@ -17,6 +17,8 @@
 package org.flossware.jcore.utils;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,6 +38,16 @@ public class ExceptionUtilsTest {
         public TestException(final Throwable causedBy) {
             super(causedBy);
         }
+    }
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = ExceptionUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
     }
 
     /**

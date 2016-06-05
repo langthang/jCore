@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,6 +27,16 @@ import org.junit.Test;
  * @author Scot P. Floess
  */
 public class ObjectUtilsTest {
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = ObjectUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Tests a null object a failure message.
@@ -59,7 +71,7 @@ public class ObjectUtilsTest {
         final Object obj = new Object();
         Assert.assertSame("Should be correct value", obj, ObjectUtils.ensureObject(obj));
     }
-    
+
     /**
      * Tests a null object for a package.
      */
@@ -67,7 +79,7 @@ public class ObjectUtilsTest {
     public void test_getPackage_fail() {
         ObjectUtils.getPackage(null);
     }
-        
+
     /**
      * Tests an object for a package.
      */

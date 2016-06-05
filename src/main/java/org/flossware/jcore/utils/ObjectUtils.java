@@ -48,7 +48,7 @@ public class ObjectUtils {
     public static <V> V ensureObject(final V object) throws IllegalArgumentException {
         return ObjectUtils.ensureObject(object, DEFAULT_ERROR_MSG);
     }
-    
+
     /**
      * Compute the package for object.
      *
@@ -58,5 +58,11 @@ public class ObjectUtils {
      */
     public static String getPackage(final Object object) {
         return ClassUtils.getPackageName(ObjectUtils.ensureObject(object, "Must have an object!").getClass());
+    }
+
+    /**
+     * Default constructor not allowed.
+     */
+    private ObjectUtils() {
     }
 }

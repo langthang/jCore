@@ -16,6 +16,8 @@
  */
 package org.flossware.jcore.utils;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Assert;
@@ -29,6 +31,16 @@ import org.junit.Test;
 public class LoggerUtilsTest {
 
     static final Logger LOGGER = Logger.getLogger(LoggerUtilsTest.class.getName());
+
+    /**
+     * Tests the constructor.
+     */
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Constructor constructor = LoggerUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(new Object[0]);
+    }
 
     /**
      * Doesn't really test anything - just ensures we can log.
