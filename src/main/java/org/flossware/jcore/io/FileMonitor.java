@@ -26,7 +26,11 @@ import org.flossware.jcore.utils.StringUtils;
 /**
  *
  * This class will monitor a file for changes. If the file does not exist, no changes can be considered. A change to a file is
- * denoted by its last modified time stamp changing.
+ * denoted by its last modified time stamp changing. Please note under Linux, the last modified date of a file appears to be per
+ * second.
+ *
+ * When determining if a file has changes, calling isChanged() will return and subsequently calling isChanged() will then return
+ * false unless the last modified date does change.
  *
  * @author sfloess
  *
