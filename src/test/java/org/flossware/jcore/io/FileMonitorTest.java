@@ -157,7 +157,7 @@ public class FileMonitorTest {
      * Test a file changing.
      */
     @Test
-    public void test_isChanged() throws FileNotFoundException, IOException {
+    public void test_isChanged() throws FileNotFoundException, IOException, InterruptedException {
         final FileMonitor fileMonitor = new FileMonitor(tempFile);
 
         Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
@@ -165,9 +165,25 @@ public class FileMonitorTest {
         final FileOutputStream fos = new FileOutputStream(tempFile);
         final byte[] bytes = new byte[1024];
         fos.write(bytes);
+
+        // One second granularity on file modification changes...
+        Thread.currentThread().sleep(1000);
+
+        Assert.assertTrue("File should have changed", fileMonitor.isChanged());
+
+        fos.write(bytes);
+
+        // One second granularity on file modification changes...
+        Thread.currentThread().sleep(1000);
+
         fos.close();
 
         Assert.assertTrue("File should have changed", fileMonitor.isChanged());
+        Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
+
+        // One second granularity on file modification changes...
+        Thread.currentThread().sleep(1000);
+
         Assert.assertFalse("File should not have changed", fileMonitor.isChanged());
     }
 
