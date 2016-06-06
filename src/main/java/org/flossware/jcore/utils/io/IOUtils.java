@@ -78,7 +78,7 @@ public class IOUtils {
         try {
             closeable.close();
         } catch (final IOException ioException) {
-            final long l = System.currentTimeMillis();      // Defeating PMD so as to not get a warning...
+            System.currentTimeMillis();      // Defeating PMD so as to not get a warning...
         }
     }
 }
