@@ -21,7 +21,8 @@ import java.util.logging.Logger;
 import org.flossware.jcore.utils.LoggerUtils;
 
 /**
- * An abstract base class that can be used to conveniently extends to get common functionality (for example a logger).
+ * An abstract base class one can extend to get common functionality such as a logger. There are a family of methods that allow one
+ * to log values and return a value. This allows one to perform simple logging and return of values in one line.
  *
  * @author Scot P. Floess
  */
@@ -76,7 +77,7 @@ public abstract class AbstractCommonBase {
 
     /**
      * Log and return the value thats found at <code>index</code> in the var arg <code>objs</code>. The "i" in LogFi stands for
- integer position. Without a unique name on this method, there is conflict in calling the logAndReturn() counterpart.
+     * integer position. Without a unique name on this method, there is conflict in calling the logAndReturn() counterpart.
      *
      * @param <V> the type to return.
      *

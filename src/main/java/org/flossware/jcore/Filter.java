@@ -1,7 +1,7 @@
 package org.flossware.jcore;
 
 /**
- * API to perform filters.
+ * API to perform filtering.
  *
  * @author sfloess
  *
@@ -11,7 +11,7 @@ package org.flossware.jcore;
 public interface Filter<T, V> {
 
     /**
-     * Return true if <code>object</code> meets filter.
+     * Return true if <code>toFilter</code> meets filter.
      *
      * @param toFilter the thing being filtered.
      * @param value the value to apply filter against <code>toFilter</code>.
