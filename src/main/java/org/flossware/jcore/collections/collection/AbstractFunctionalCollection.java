@@ -37,9 +37,11 @@ public abstract class AbstractFunctionalCollection<V> extends AbstractCommonBase
     /**
      * Return the set we will use.
      *
-     * @return the set to be used.
+     * @param <T> the type of collection to return.
+     *
+     * @return the collection to be used.
      */
-    protected abstract Collection<V> getCollection();
+    protected abstract <T extends Collection<V>> T getCollection();
 
     /**
      * {@inheritDoc}
