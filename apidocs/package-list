@@ -4,6 +4,7 @@ org.flossware.jcore.collections.collection
 org.flossware.jcore.collections.map
 org.flossware.jcore.io
 org.flossware.jcore.operation
+org.flossware.jcore.soap
 org.flossware.jcore.utils
 org.flossware.jcore.utils.collections
 org.flossware.jcore.utils.io
