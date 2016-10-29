@@ -21,7 +21,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Tests the file monitor class.
+ * Tests the UrlException class.
  *
  * @author Scot P. Floess
  */

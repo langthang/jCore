@@ -18,6 +18,7 @@ package org.flossware.jcore.soap;
 
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
+import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 import org.junit.Assert;
@@ -35,74 +36,74 @@ import org.mockito.runners.MockitoJUnitRunner;
  */
 @RunWith( MockitoJUnitRunner.class )
 public class AbstractSoapHandlerTest {
-    
+
     static class StubSoapRequestHandler extends AbstractSoapHandler {
-        
+
         final boolean isProcessRequestExceptionRaised;
         final boolean isProcessResponseExceptionRaised;
-        
+
         boolean wasProcessRequestExceptionRaised;
         boolean wasProcessResponseExceptionRaised;
-        
+
         boolean wasProcessRequestCalled;
         boolean wasProcessResponseCalled;
         boolean wasProcessFailureCalled;
-        
+
         StubSoapRequestHandler(final boolean isProcessRequestExceptionRaised, final boolean isProcessResponseExceptionRaised) {
             this.isProcessRequestExceptionRaised = isProcessRequestExceptionRaised;
             this.isProcessResponseExceptionRaised = isProcessResponseExceptionRaised;
-            
+
             this.wasProcessRequestExceptionRaised = false;
             this.wasProcessResponseExceptionRaised = false;
-            
+
             this.wasProcessRequestCalled = false;
             this.wasProcessResponseCalled = false;
             this.wasProcessFailureCalled = false;
         }
-        
+
         StubSoapRequestHandler() {
             this(false, false);
         }
-        
+
         @Override
-        protected boolean processRequest(SOAPMessageContext msgContext) throws SOAPException {
+        protected boolean processRequest(final SOAPMessageContext msgContext) throws SOAPException {
             wasProcessRequestCalled = true;
-            
+
             if (isProcessRequestExceptionRaised) {
                 wasProcessRequestExceptionRaised = true;
-                
+
                 throw new SOAPException();
             }
-            
+
             return true;
         }
-        
+
         @Override
-        protected boolean processResponse(SOAPMessageContext msgContext) throws SOAPException {
+        protected boolean processResponse(final SOAPMessageContext msgContext) throws SOAPException {
             wasProcessResponseCalled = true;
-            
+
             if (isProcessResponseExceptionRaised) {
                 wasProcessResponseExceptionRaised = true;
-                
+
                 throw new SOAPException();
             }
-            
+
             return true;
         }
-        
+
         @Override
         protected void processFailure(final SOAPException soapException) {
             wasProcessFailureCalled = true;
             super.processFailure(soapException);
         }
     }
-    
+
     @Mock
     SOAPMessageContext soapMessageContext;
-    
+
     @Mock
     SOAPMessage soapMessage;
-    
+
     @Before
     public void init() {
         Mockito.when(soapMessageContext.getMessage()).thenReturn(soapMessage);
@@ -138,16 +139,16 @@ public class AbstractSoapHandlerTest {
     @Test
     public void test_handleMessage_processResponse_SOAPException() throws SOAPException {
         final StubSoapRequestHandler stub = new StubSoapRequestHandler(false, true);
-        
+
         Mockito.when(soapMessageContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)).thenReturn(false);
-        
+
         Assert.assertFalse("Should have gotten a false", stub.handleMessage(soapMessageContext));
         Assert.assertTrue("Should have called processResponse()", stub.wasProcessResponseCalled);
         Assert.assertTrue("Should have raised a SOAPException from processResponse()", stub.wasProcessResponseExceptionRaised);
         Assert.assertFalse("Should not have called processRequest()", stub.wasProcessRequestExceptionRaised);
         Assert.assertFalse("Should not have raised a SOAPException processRequest()", stub.wasProcessRequestExceptionRaised);
         Assert.assertTrue("Should have called processFailure()", stub.wasProcessFailureCalled);
-        
+
         Mockito.verify(soapMessage, Mockito.times(0)).saveChanges();
     }
 
@@ -157,16 +158,16 @@ public class AbstractSoapHandlerTest {
     @Test
     public void test_handleMessage_processResponse() throws SOAPException {
         final StubSoapRequestHandler stub = new StubSoapRequestHandler(false, false);
-        
+
         Mockito.when(soapMessageContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)).thenReturn(false);
-        
+
         Assert.assertTrue("Should have gotten a true", stub.handleMessage(soapMessageContext));
         Assert.assertTrue("Should have called processResponse()", stub.wasProcessResponseCalled);
         Assert.assertFalse("Should have called processResponse()", stub.wasProcessResponseExceptionRaised);
         Assert.assertFalse("Should not have called processRequest()", stub.wasProcessRequestCalled);
         Assert.assertFalse("Should not have raised a SOAPException processRequest()", stub.wasProcessRequestExceptionRaised);
         Assert.assertFalse("Should not have called processFailure()", stub.wasProcessFailureCalled);
-        
+
         Mockito.verify(soapMessage, Mockito.times(0)).saveChanges();
     }
 
@@ -176,16 +177,16 @@ public class AbstractSoapHandlerTest {
     @Test
     public void test_handleMessage_processesRequest_SOAPException() throws SOAPException {
         final StubSoapRequestHandler stub = new StubSoapRequestHandler(true, false);
-        
+
         Mockito.when(soapMessageContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)).thenReturn(true);
-        
+
         Assert.assertFalse("Should have gotten a false", stub.handleMessage(soapMessageContext));
         Assert.assertFalse("Should not have called processResponse()", stub.wasProcessResponseCalled);
         Assert.assertFalse("Should not have raised a SOAPException from  processResponse()", stub.wasProcessResponseExceptionRaised);
         Assert.assertTrue("Should have called processRequest()", stub.wasProcessRequestCalled);
         Assert.assertTrue("Should have raised a SOAPException from processRequest()", stub.wasProcessRequestExceptionRaised);
         Assert.assertTrue("Should have called processFailure()", stub.wasProcessFailureCalled);
-        
+
         Mockito.verify(soapMessage, Mockito.times(0)).saveChanges();
     }
 
@@ -195,17 +196,25 @@ public class AbstractSoapHandlerTest {
     @Test
     public void test_handleMessage_processRequest() throws SOAPException {
         final StubSoapRequestHandler stub = new StubSoapRequestHandler(false, false);
-        
+
         Mockito.when(soapMessageContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY)).thenReturn(true);
-        
+
         Assert.assertTrue("Should have gotten a true", stub.handleMessage(soapMessageContext));
         Assert.assertFalse("Should not have called processResponse()", stub.wasProcessResponseCalled);
         Assert.assertFalse("Should not have called processResponse()", stub.wasProcessResponseExceptionRaised);
         Assert.assertTrue("Should have called processRequest()", stub.wasProcessRequestCalled);
         Assert.assertFalse("Should not have raised a SOAPException processRequest()", stub.wasProcessRequestExceptionRaised);
         Assert.assertFalse("Should not have called processFailure()", stub.wasProcessFailureCalled);
-        
+
         Mockito.verify(soapMessage, Mockito.times(1)).saveChanges();
+
+        //
+        // Silly calls to up code coverage for generics
+        // https://sourceforge.net/p/cobertura/bugs/92/
+        //
+        final Handler handler = new StubSoapRequestHandler(false, false);
+        final MessageContext messsageContext = soapMessageContext;
+        handler.handleMessage(messsageContext);
     }
 
     /**
@@ -214,6 +223,14 @@ public class AbstractSoapHandlerTest {
     @Test
     public void test_handleFault() {
         Assert.assertTrue("Should have handled fault", new StubSoapRequestHandler(false, false).handleFault(soapMessageContext));
+
+        //
+        // Silly calls to up code coverage for generics
+        // https://sourceforge.net/p/cobertura/bugs/92/
+        //
+        final Handler handler = new StubSoapRequestHandler(false, false);
+        final MessageContext messsageContext = soapMessageContext;
+        handler.handleFault(messsageContext);
     }
 
     /**
@@ -222,5 +239,13 @@ public class AbstractSoapHandlerTest {
     @Test
     public void test_close() {
         new StubSoapRequestHandler(false, false).close(soapMessageContext);
+
+        //
+        // Silly calls to up code coverage for generics
+        // https://sourceforge.net/p/cobertura/bugs/92/
+        //
+        final Handler handler = new StubSoapRequestHandler(false, false);
+        final MessageContext messsageContext = soapMessageContext;
+        handler.close(messsageContext);
     }
 }

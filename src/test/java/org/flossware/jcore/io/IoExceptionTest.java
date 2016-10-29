@@ -21,15 +21,15 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Tests the FileException class.
+ * Tests the IoException class.
  *
  * @author Scot P. Floess
  */
-public class FileExceptionTest {
+public class IoExceptionTest {
 
     @Test
     public void test_default() {
-        final FileException exception = new FileException();
+        final IoException exception = new IoException();
 
         Assert.assertNull("Should be no cause", exception.getCause());
         Assert.assertNull("Should be no message", exception.getMessage());
@@ -39,7 +39,7 @@ public class FileExceptionTest {
     public void test_String() {
         final String msg = TestUtils.generateUniqueStr("Foo", "Bar");
 
-        final FileException exception = new FileException(msg);
+        final IoException exception = new IoException(msg);
 
         Assert.assertNull("Should be no cause", exception.getCause());
         Assert.assertEquals("Should be same message", msg, exception.getMessage());
@@ -49,7 +49,7 @@ public class FileExceptionTest {
     public void test_Throwable() {
         final IllegalArgumentException cause = new IllegalArgumentException();
 
-        final FileException exception = new FileException(cause);
+        final IoException exception = new IoException(cause);
 
         Assert.assertSame("Should be same cause", cause, exception.getCause());
         Assert.assertEquals("Should be no message", cause.getClass().getName(), exception.getMessage());
@@ -60,7 +60,7 @@ public class FileExceptionTest {
         final String msg = TestUtils.generateUniqueStr("Foo", "Bar");
         final IllegalArgumentException cause = new IllegalArgumentException();
 
-        final FileException exception = new FileException(msg, cause);
+        final IoException exception = new IoException(msg, cause);
 
         Assert.assertSame("Should be same cause", cause, exception.getCause());
         Assert.assertEquals("Should be same message", msg, exception.getMessage());

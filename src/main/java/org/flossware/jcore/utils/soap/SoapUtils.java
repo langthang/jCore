@@ -16,14 +16,13 @@
  */
 package org.flossware.jcore.utils.soap;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
-import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
@@ -31,6 +30,8 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
+import org.flossware.jcore.io.ByteArrayOutputStreamFactory;
+import org.flossware.jcore.io.OutputStreamFactory;
 import org.flossware.jcore.soap.SoapException;
 import org.flossware.jcore.utils.LoggerUtils;
 import org.flossware.jcore.utils.ObjectUtils;
@@ -58,6 +59,11 @@ public class SoapUtils {
     }
 
     /**
+     * The default used to create OutputStream's.
+     */
+    public static final OutputStreamFactory DEFAULT_OUTPUT_STREAM_FACTORY = new ByteArrayOutputStreamFactory();
+
+    /**
      * Return false if val is null otherwise the boolean representation of val.
      *
      * @param val the value to examine.
@@ -65,7 +71,11 @@ public class SoapUtils {
      * @return false if val is null or the boolean representation of val.
      */
     public static boolean isRequest(final Object val) {
-        return LoggerUtils.logAndReturn(getLogger(), Level.FINEST, "Is request [{0}] for val [{1}]", (val == null ? false : (Boolean) val), val);
+        final boolean retVal = val != null && (Boolean) val;
+
+        LoggerUtils.log(getLogger(), Level.FINEST, "Is request [{0}] for val [{1}]", retVal, val);
+
+        return retVal;
     }
 
     /**
@@ -113,10 +123,6 @@ public class SoapUtils {
         StringUtils.ensureString(value, "Must provide a value");
 
         LoggerUtils.log(getLogger(), Level.FINEST, "Adding head value [{0}] for QName [{1}] in SOAP header {2}", value, headerName, soapHeader);
-
-        final SOAPElement soapHeaderNameElement = soapHeader.addChildElement(headerName);
-        final SOAPElement soapNameElement = soapHeaderNameElement.addChildElement(name);
-        final SOAPElement soapValueElement = soapNameElement.addTextNode(value);
 
         soapHeader.addChildElement(headerName).addChildElement(name).addTextNode(value);
     }
@@ -166,6 +172,30 @@ public class SoapUtils {
     }
 
     /**
+     * Write <code>soapMessage</code> to an OutputStream created from <code>outputStreamFactory</code>.
+     *
+     * @param outputStreamFactory used to create an output stream.
+     * @param soapMessage         the SOAP message to convert.
+     *
+     * @return return the string representation of <code>soapMessage</code>.
+     */
+    static String convertToString(final OutputStreamFactory outputStreamFactory, final SOAPMessage soapMessage) {
+        ObjectUtils.ensureObject(outputStreamFactory, "Must provide an OutputStream!");
+
+        try (final OutputStream outputStream = outputStreamFactory.createOutputStream()) {
+            soapMessage.writeTo(outputStream);
+
+            return outputStream.toString();
+        } catch (final SOAPException | IOException ex) {
+            getLogger().log(Level.SEVERE, "Trouble writing soapMessage", ex);
+
+            throw new SoapException(ex);
+        } finally {
+            getLogger().log(Level.FINEST, "Done converting SOAPMessage to String");
+        }
+    }
+
+    /**
      * Convert <code>soapMessage</code> to a string.
      *
      * @param soapMessage the SOAP message to convert.
@@ -173,14 +203,7 @@ public class SoapUtils {
      * @return return the string representation of <code>soapMessage</code>.
      */
     public static String convertToString(final SOAPMessage soapMessage) {
-        try (final ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            soapMessage.writeTo(baos);
-            return baos.toString();
-        } catch (SOAPException | IOException ex) {
-            getLogger().log(Level.SEVERE, "Trouble writing soapMessage", ex);
-
-            throw new SoapException(ex);
-        }
+        return convertToString(DEFAULT_OUTPUT_STREAM_FACTORY, soapMessage);
     }
 
     /**

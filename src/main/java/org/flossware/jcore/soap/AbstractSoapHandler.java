@@ -71,7 +71,7 @@ public abstract class AbstractSoapHandler extends AbstractCommonBase implements 
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public Set getHeaders() {
@@ -79,7 +79,7 @@ public abstract class AbstractSoapHandler extends AbstractCommonBase implements 
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public boolean handleMessage(final SOAPMessageContext msgContext) {
@@ -104,7 +104,7 @@ public abstract class AbstractSoapHandler extends AbstractCommonBase implements 
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public boolean handleFault(final SOAPMessageContext msgContext) {
@@ -114,7 +114,7 @@ public abstract class AbstractSoapHandler extends AbstractCommonBase implements 
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public void close(final MessageContext msgContext) {

@@ -33,6 +33,7 @@ import javax.xml.ws.Binding;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
+import org.flossware.jcore.io.OutputStreamFactory;
 import org.flossware.jcore.soap.SoapException;
 import org.flossware.jcore.utils.TestUtils;
 import org.junit.Assert;
@@ -73,6 +74,12 @@ public class SoapUtilsTest {
 
     @Mock
     Logger logger;
+
+    @Mock
+    OutputStreamFactory outputStreamFactory;
+
+    @Mock
+    ByteArrayOutputStream byteArrayOutputStream;
 
     /**
      * Tests the constructor.
@@ -228,6 +235,36 @@ public class SoapUtilsTest {
         Assert.assertSame("Should be same binding provider", toCompare, port);
 
         Mockito.verify(binding, Mockito.times(1)).setHandlerChain(Mockito.anyList());
+    }
+
+    /**
+     * Test convertToString() with an OutputStreamFactory and SOAPMessage where a SOAPException is raised.
+     */
+    @Test( expected = SoapException.class )
+    public void test_convertToString_OutputStreamFactory_SOAPException() throws SOAPException, IOException {
+        Mockito.doThrow(new SOAPException()).when(soapMessage).writeTo(Mockito.any(OutputStream.class));
+
+        SoapUtils.convertToString(outputStreamFactory, soapMessage);
+    }
+
+    /**
+     * Test convertToString() with an OutputStreamFactory SOAPMessage where an IOException is raised.
+     */
+    @Test( expected = SoapException.class )
+    public void test_convertToString_OutputStreamFactory_IOException() throws SOAPException, IOException {
+        Mockito.doThrow(new IOException()).when(soapMessage).writeTo(Mockito.any(OutputStream.class));
+
+        SoapUtils.convertToString(outputStreamFactory, soapMessage);
+    }
+
+    /**
+     * Test convertToString() with a OutputStreamFactory and SOAPMessage.
+     */
+    @Test
+    public void test_convertToString_OutputStreamFactory() throws SOAPException, IOException {
+        Mockito.when(outputStreamFactory.createOutputStream()).thenReturn(byteArrayOutputStream);
+        Assert.assertNotNull("Should have computed a string", SoapUtils.convertToString(outputStreamFactory, soapMessage));
+        Mockito.verify(soapMessage, Mockito.times(1)).writeTo(Mockito.any(ByteArrayOutputStream.class));
     }
 
     /**
