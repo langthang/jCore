@@ -172,6 +172,25 @@ public class SoapUtils {
     }
 
     /**
+     * Set the URL to call on a web service.
+     *
+     * @param port is the port for whom we want to set the web service url.
+     * @param url  is the URL for the port.
+     *
+     * @throws IllegalArgumentException if svcUrl is null or blank.
+     */
+    public static <P> P setUrl(final P port, final String url) {
+        ObjectUtils.ensureObject(port, "Must provide a port!");
+        StringUtils.ensureString(url, "Must provide a url!");
+
+        LoggerUtils.log(getLogger(), Level.FINEST, "Setting url [{0}] on port [{1}]", url, port);
+
+        ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
+
+        return port;
+    }
+
+    /**
      * Write <code>soapMessage</code> to an OutputStream created from <code>outputStreamFactory</code>.
      *
      * @param outputStreamFactory used to create an output stream.

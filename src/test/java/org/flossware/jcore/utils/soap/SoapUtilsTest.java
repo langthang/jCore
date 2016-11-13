@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
@@ -37,6 +38,7 @@ import org.flossware.jcore.io.OutputStreamFactory;
 import org.flossware.jcore.soap.SoapException;
 import org.flossware.jcore.utils.TestUtils;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -73,6 +75,12 @@ public class SoapUtilsTest {
     QName headerName;
 
     @Mock
+    BindingProvider port;
+
+    @Mock
+    Map<String, Object> requestContext;
+
+    @Mock
     Logger logger;
 
     @Mock
@@ -80,6 +88,14 @@ public class SoapUtilsTest {
 
     @Mock
     ByteArrayOutputStream byteArrayOutputStream;
+
+    /**
+     * Initialize tests...
+     */
+    @Before
+    public void init() {
+        Mockito.when(port.getRequestContext()).thenReturn(requestContext);
+    }
 
     /**
      * Tests the constructor.
@@ -238,13 +254,40 @@ public class SoapUtilsTest {
     }
 
     /**
-     * Test convertToString() with an OutputStreamFactory and SOAPMessage where a SOAPException is raised.
+     * Test setUrl() with a null port.
      */
-    @Test( expected = SoapException.class )
-    public void test_convertToString_OutputStreamFactory_SOAPException() throws SOAPException, IOException {
-        Mockito.doThrow(new SOAPException()).when(soapMessage).writeTo(Mockito.any(OutputStream.class));
+    @Test( expected = IllegalArgumentException.class )
+    public void test_setUrl_P_String_NullPort() {
+        SoapUtils.setUrl(null, TestUtils.generateUniqueStr());
+    }
 
-        SoapUtils.convertToString(outputStreamFactory, soapMessage);
+    /**
+     * Test setUrl() with a null URL.
+     */
+    @Test( expected = IllegalArgumentException.class )
+    public void test_setUrl_P_String_NullUrl() {
+        SoapUtils.setUrl(port, null);
+    }
+
+    /**
+     * Test setUrl() with a blank URL.
+     */
+    @Test( expected = IllegalArgumentException.class )
+    public void test_setUrl_P_String_EmptyUrl() {
+        SoapUtils.setUrl(port, "");
+    }
+
+    /**
+     * Test setUrl().
+     */
+    @Test
+    public void test_setUrl() {
+        final String url = TestUtils.generateUniqueStr("URL");
+
+        SoapUtils.setUrl(port, url);
+
+        Mockito.verify(port, Mockito.times(1)).getRequestContext();
+        Mockito.verify(requestContext, Mockito.times(1)).put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
     }
 
     /**
