@@ -10,11 +10,16 @@ package org.flossware.jcore;
 public interface Stringifiable {
 
     /**
+     * A default prefix to use.
+     */
+    static final String DEFAULT_PREFIX = "    ";
+
+    /**
      * Using <code>stringBuilder</code>, compute the string representation of self whose prefix for computation is
      * <code>prefix</code>.
      *
      * @param stringBuilder will have the string representation of self appended.
-     * @param prefix is the prefix to be first appended prior to self's string representation.
+     * @param prefix        is the prefix to be first appended prior to self's string representation.
      *
      * @return a string builder that can be reused.
      */
