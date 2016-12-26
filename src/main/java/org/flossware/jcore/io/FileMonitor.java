@@ -123,6 +123,6 @@ public class FileMonitor extends AbstractStringifiable {
      */
     @Override
     public StringBuilder toStringBuilder(final StringBuilder sb, final String prefix) {
-        return sb.append(prefix).append("file [").append(getFile()).append("] - exists [").append(exists()).append("]");
+        return sb.append(prefix).append(DEFAULT_PREFIX).append("file [").append(getFile()).append("] - exists [").append(exists()).append("]");
     }
 }
